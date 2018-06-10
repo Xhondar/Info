@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp">
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/befunky_project"
+                    android:id="@+id/image1"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            >
+
+            <TextView
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:paddingLeft="8dp"
+                android:textSize="16sp"
+                android:text="Clorofilla"
+                android:id="@+id/name"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/logo"
+                android:paddingLeft="8dp"
+                android:id="@+id/image2"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp"
+            >
+
+            <TextView
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:textSize="9sp"
+                android:gravity="end"
+                android:textStyle="bold"
+                android:text="Via:"
+                />
+
+            <TextView
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="9sp"
+                android:gravity="end"
+                android:id="@+id/address"
+                android:text="Ivo Voltolini n°8"
+                android:maxLines="3"
+                />
+
+
+            <TextView
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="1dp"
+                android:textSize="9sp"
+                android:gravity="end"
+                android:textStyle="bold"
+                android:text="Numero:"
+                android:maxLines="3"
+                />
+
+            <TextView
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="9sp"
+                android:gravity="end"
+                android:id="@+id/number"
+                android:text="3279137890"
+                android:maxLines="3"
+                />
+
+            <TextView
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingTop="1dp"
+                android:textSize="9sp"
+                android:gravity="end"
+                android:text="Descrizione:"
+                />
+
+            <TextView
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="9sp"
+                android:gravity="end"
+                android:id="@+id/description"
+                android:text="Bello, Bellissimo"
+                android:maxLines="3"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string-array name="cities">
+        <item> Carpi </item>
+        <item> Berlino </item>
+        <item> Trieste </item>
+        <item> Norimberga </item>
+        <item> Lubiana </item>
+    </string-array>
+</resources>

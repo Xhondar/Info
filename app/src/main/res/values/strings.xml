@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Info+</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="carpi_popter">Superficie:   131,54 km²  \n\nAbitanti:   71 033[2] (31-5-2017) \n\nDensità:    540,01 ab./km²</string>
+    <string name="carpi_evsto1">Carpi era un borgo medievale rifondato come roccaforte nell'Alto Medioevo.\nDal XIV secolo fu sede della signoria dei Pio, per passare poi a far parte dei domini estensi nel 1500.\nNel secondo dopoguerra Carpi si è profondamente trasformata, grazie allo sviluppo dell'industria della maglieria.</string>
+    <string name="carpi_evsto2">Nel secondo dopoguerra Carpi ha allestito il Museo del Deportato come memoriale della deportazione ed organizza regolarmente numerose manifestazioni in memoria dell'olocausto.\nCarpi è tra le Città decorate al Valor Militare per la Guerra di Liberazione per i sacrifici delle sue popolazioni e per la sua attività nella lotta partigiana durante la seconda guerra mondiale e della Medaglia d'oro al Valor Civile per il sostegno dato dai cittadini alle persone internate al campo di Fossoli per alleviare le pene e consentirne la fuga.</string>
+    <string name="carpi_evsto3">Si distinse in particolare Odoardo Focherini, il quale pagherà il suo impegno con la deportazione e la morte nel campo di concentramento di Hersbruck.</string>
+    <string name="google_maps_api_key">AIzaSyD6hnoMODpCjwH6fkdNw-K_ryQQuYfVT2w</string>
+    <string name="carpi_monumenti1">La Sagra</string>
+    <string name="carpi_monumenti2">La Piazza</string>
+    <string name="carpi_monumenti3">Il Duomo</string>
+    <string name="carpi_monumenti4">Il Castello</string>
+    <string name="carpi_cucina1">La Mostarda fina</string>
+    <string name="carpi_cucina2">L'Acetaia</string>
+    <string name="carpi_cucina3">Lo Zampone</string>
+
+
+</resources>
