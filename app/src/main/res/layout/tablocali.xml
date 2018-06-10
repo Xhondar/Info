@@ -5,16 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.android.examp_2.tab_locali">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        android:paddingLeft="8dp"
-        android:background="@color/yellow"
-        android:text="Fonti prese da: TripAdvisor"
-        />
+    tools:context="esame.progetto.xhondar.github.com.info">
 
     <ListView
         android:layout_width="match_parent"
