@@ -31,12 +31,66 @@ import org.w3c.dom.Text;
 public class tab_meteo extends Fragment {
     tab t = new tab();
     String s = "";
+    public void find_weather(String citta){
+        final TextView temp, timeData;
+        temp = (TextView) getActivity().findViewById(R.id.tempMeteo);
+        timeData = (TextView) getActivity().findViewById(R.id.timeDate);
+
+        String url = "http://api.openweathermap.org/data/2.5/weather?q=";
+        if(citta == "Lubiana")
+        {
+            citta = "Ljubljana";
+        }
+        String city = citta ;
+        String apiKey = "&appid=41afbec1ba89050882ba1ef131e6aa72";
+        url = url + city + apiKey + "&lang=it&units=metric";
+
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try
+                {
+                    JSONObject obj = response.getJSONObject("main");
+                    JSONArray array = response.getJSONArray("weather");
+                    //JSONObject obj2 = array.getJSONObject(0);
+
+                    String temperature = String.valueOf(obj.getDouble("temp"));
+                    //String description = obj2.getString("description");
+
+                    temp.setText(temperature);
+
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MM-dd");
+                    String formatted_date = sdf.format(calendar.getTime());
+
+                    timeData.setText(formatted_date);
+
+
+
+                }catch(JSONException e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        );
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(jor);
+    }
+    // -----------------------------------------------------------------------------------------------
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootView = inflater.inflate(R.layout.tabmeteo, container, false);
         t = (tab) getActivity();
         s = t.getS();
+        find_weather(s);
         return rootView;
 
     }
