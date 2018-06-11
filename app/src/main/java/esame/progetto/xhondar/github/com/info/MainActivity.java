@@ -14,8 +14,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -113,7 +126,57 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
+    public void find_weather(){
+        final TextView temp, timeData;
+        temp = (TextView) findViewById(R.id.tempMeteo);
+        timeData = (TextView) findViewById(R.id.timeDate);
 
+        String url = "http://api.openweathermap.org/data/2.5/weather?q=carpi,it&appid=";
+        String apiKey = "41afbec1ba89050882ba1ef131e6aa72";
+        url = url + apiKey + "&lang=it&units=metric";
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try
+                {
+                    JSONObject obj = response.getJSONObject("main");
+                    JSONArray array = response.getJSONArray("weather");
+                    JSONObject obj2 = array.getJSONObject(0);
+
+                    String temperature = String.valueOf(obj.getDouble("temp"));
+                    String description = obj2.getString("description");
+
+                    temp.setText(temperature);
+
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MM-dd");
+                    String formatted_date = sdf.format(calendar.getTime());
+
+                    timeData.setText(formatted_date);
+                    double t_int = Double.parseDouble(temperature);
+                    double centi = (t_int - 32) / 1.8000;
+                    centi = Math.round(centi);
+                    int i = (int)centi;
+                    temp.setText(String.valueOf(i));
+
+
+
+                }catch(JSONException e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        );
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(jor);
+    }
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
