@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         timeData = (TextView) findViewById(R.id.timeDate);
 
         String url = "http://api.openweathermap.org/data/2.5/weather?q=";
+        if(citta == "Lubiana")
+        {
+            citta = "Ljubljana";
+        }
         String city = citta ;
         String apiKey = "&appid=41afbec1ba89050882ba1ef131e6aa72";
         url = url + city + apiKey + "&lang=it&units=metric";
@@ -55,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     JSONObject obj2 = array.getJSONObject(0);
 
                     String temperature = String.valueOf(obj.getDouble("temp"));
-                    String description = obj2.getString("description");
+                    //String description = obj2.getString("description");
 
                     temp.setText(temperature);
 
