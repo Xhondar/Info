@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -110,15 +112,7 @@ public class tab_locale extends Fragment {
         return rootView;
     }
 
-    InputStream inputStream_1;
-    AssetManager assetManager_1;
-    Drawable[] drawables_1;
     String[] images_1;
-
-
-    InputStream inputStream_2;
-    AssetManager assetManager_2;
-    Drawable[] drawables_2;
     String[] images_2;
 
     class CustomAdapter extends BaseAdapter{
@@ -137,6 +131,27 @@ public class tab_locale extends Fragment {
             return 0;
         }
 
+        private  Bitmap readImageFromAssets_1(String path) {
+            Bitmap bmp;
+            try {
+                InputStream stream = getContext().getAssets().open(path, Context.MODE_PRIVATE);
+                bmp = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(stream), 400, 400, true);
+            } catch (Exception ignore) {
+                bmp = null;
+            }
+            return bmp;
+        }
+        private  Bitmap readImageFromAssets_2(String path) {
+            Bitmap bmp;
+            try {
+                InputStream stream = getContext().getAssets().open(path, Context.MODE_PRIVATE);
+                bmp = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(stream), 615, 325, true);
+            } catch (Exception ignore) {
+                bmp = null;
+            }
+            return bmp;
+        }
+
         @Override
         public View getView(int i, View view, ViewGroup parent) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,null);
@@ -147,125 +162,39 @@ public class tab_locale extends Fragment {
             TextView textView2 = view.findViewById(R.id.address);
             TextView textView3 = view.findViewById(R.id.number);
             TextView textView4 = view.findViewById(R.id.description);
-
-
-
+            try {
+                images_1 = getContext().getAssets().list(s.toLowerCase() + "_stelle");
+                imageView1.setImageBitmap(readImageFromAssets_1(s.toLowerCase() + "_stelle/" + images_1[i]));
+                images_2 = getContext().getAssets().list(s.toLowerCase());
+                imageView2.setImageBitmap(readImageFromAssets_2(s.toLowerCase() + "/" + images_2[i]));
+            } catch (IOException e) {
+            }
             switch(s){
                 case "Carpi":
-                    try {
-                        assetManager_1 = getContext().getAssets();
-                        images_1 = assetManager_1.list("carpi_stelle");
-                        drawables_1 = new Drawable[images_1.length];
-                        inputStream_1 = getContext().getAssets().open("carpi_stelle/" + images_1[i]);
-                        Drawable drawable = Drawable.createFromStream(inputStream_1, null);
-                        imageView1.setImageDrawable(drawable);
-                    } catch (IOException e) {
-                    }
-                    try {
-                        assetManager_2 = getContext().getAssets();
-                        images_2 = assetManager_2.list("carpi");
-                        drawables_2 = new Drawable[images_2.length];
-                        inputStream_2 = getContext().getAssets().open("carpi/" + images_2[i]);
-                        Drawable drawable = Drawable.createFromStream(inputStream_2, null);
-                        imageView2.setImageDrawable(drawable);
-                    } catch (IOException e) {
-                    }
                     textView1.setText(name_carpi[i]);
                     textView2.setText(address_carpi[i]);
                     textView3.setText(number_carpi[i]);
                     textView4.setText(description_carpi[i]);
                     break;
                 case "Berlino":
-                    try {
-                        assetManager_1 = getContext().getAssets();
-                        images_1 = assetManager_1.list("berlino_stelle");
-                        drawables_1 = new Drawable[images_1.length];
-                        inputStream_1 = getContext().getAssets().open("berlino_stelle/" + images_1[i]);
-                        Drawable drawable = Drawable.createFromStream(inputStream_1, null);
-                        imageView1.setImageDrawable(drawable);
-                    } catch (IOException e) {
-                    }
-                    try {
-                        assetManager_2 = getContext().getAssets();
-                        images_2 = assetManager_2.list("berlino");
-                        drawables_2 = new Drawable[images_2.length];
-                        inputStream_2 = getContext().getAssets().open("berlino/" + images_2[i]);
-                        Drawable drawable = Drawable.createFromStream(inputStream_2, null);
-                        imageView2.setImageDrawable(drawable);
-                    } catch (IOException e) {
-                    }
                     textView1.setText(name_berlino[i]);
                     textView2.setText(address_berlino[i]);
                     textView3.setText(number_berlino[i]);
                     textView4.setText(description_berlino[i]);
                     break;
                 case "Lubiana":
-                    try {
-                        assetManager_1 = getContext().getAssets();
-                        images_1 = assetManager_1.list("lubiana_stelle");
-                        drawables_1 = new Drawable[images_1.length];
-                        inputStream_1 = getContext().getAssets().open("lubiana_stelle/" + images_1[i]);
-                        Drawable drawable = Drawable.createFromStream(inputStream_1, null);
-                        imageView1.setImageDrawable(drawable);
-                    } catch (IOException e) {
-                    }
-                    try {
-                        assetManager_2 = getContext().getAssets();
-                        images_2 = assetManager_2.list("lubiana");
-                        drawables_2 = new Drawable[images_2.length];
-                        inputStream_2 = getContext().getAssets().open("lubiana/" + images_2[i]);
-                        Drawable drawable = Drawable.createFromStream(inputStream_2, null);
-                        imageView2.setImageDrawable(drawable);
-                    } catch (IOException e) {
-                    }
                     textView1.setText(name_lubiana[i]);
                     textView2.setText(address_lubiana[i]);
                     textView3.setText(number_lubiana[i]);
                     textView4.setText(description_lubiana[i]);
                     break;
                 case "Trieste":
-                    try {
-                        assetManager_1 = getContext().getAssets();
-                        images_1 = assetManager_1.list("trieste_stelle");
-                        drawables_1 = new Drawable[images_1.length];
-                        inputStream_1 = getContext().getAssets().open("trieste_stelle/" + images_1[i]);
-                        Drawable drawable = Drawable.createFromStream(inputStream_1, null);
-                        imageView1.setImageDrawable(drawable);
-                    } catch (IOException e) {
-                    }
-                    try {
-                        assetManager_2 = getContext().getAssets();
-                        images_2 = assetManager_2.list("trieste");
-                        drawables_2 = new Drawable[images_2.length];
-                        inputStream_2 = getContext().getAssets().open("trieste/" + images_2[i]);
-                        Drawable drawable = Drawable.createFromStream(inputStream_2, null);
-                        imageView2.setImageDrawable(drawable);
-                    } catch (IOException e) {
-                    }
                     textView1.setText(name_trieste[i]);
                     textView2.setText(address_trieste[i]);
                     textView3.setText(number_trieste[i]);
                     textView4.setText(description_trieste[i]);
                     break;
                 case "Norimberga":
-                    try {
-                        assetManager_1 = getContext().getAssets();
-                        images_1 = assetManager_1.list("norimberga_stelle");
-                        drawables_1 = new Drawable[images_1.length];
-                        inputStream_1 = getContext().getAssets().open("norimberga_stelle/" + images_1[i]);
-                        Drawable drawable = Drawable.createFromStream(inputStream_1, null);
-                        imageView1.setImageDrawable(drawable);
-                    } catch (IOException e) {
-                    }
-                    try {
-                        assetManager_2 = getContext().getAssets();
-                        images_2 = assetManager_2.list("norimberga");
-                        drawables_2 = new Drawable[images_2.length];
-                        inputStream_2 = getContext().getAssets().open("norimberga/" + images_2[i]);
-                        Drawable drawable = Drawable.createFromStream(inputStream_2, null);
-                        imageView2.setImageDrawable(drawable);
-                    } catch (IOException e) {
-                    }
                     textView1.setText(name_norimberga[i]);
                     textView2.setText(address_norimberga[i]);
                     textView3.setText(number_norimberga[i]);
