@@ -37,11 +37,7 @@ public class tab_meteo extends Fragment {
         View rootView = inflater.inflate(R.layout.tabmeteo, container, false);
         t = (tab) getActivity();
         s = t.getS();
-
-
         return rootView;
 
     }
-
-
 }

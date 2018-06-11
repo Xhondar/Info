@@ -34,6 +34,55 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Button button;
     public String s;
+
+    public void find_weather(String citta){
+        final TextView temp, timeData;
+        temp = (TextView) findViewById(R.id.tempMeteo);
+        timeData = (TextView) findViewById(R.id.timeDate);
+
+        String url = "http://api.openweathermap.org/data/2.5/weather?q=";
+        String city = citta ;
+        String apiKey = "&appid=41afbec1ba89050882ba1ef131e6aa72";
+        url = url + city + apiKey + "&lang=it&units=metric";
+
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try
+                {
+                    JSONObject obj = response.getJSONObject("main");
+                    JSONArray array = response.getJSONArray("weather");
+                    JSONObject obj2 = array.getJSONObject(0);
+
+                    String temperature = String.valueOf(obj.getDouble("temp"));
+                    String description = obj2.getString("description");
+
+                    temp.setText(temperature);
+
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MM-dd");
+                    String formatted_date = sdf.format(calendar.getTime());
+
+                    timeData.setText(formatted_date);
+
+
+
+                }catch(JSONException e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        );
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(jor);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 Intent intent = new Intent(MainActivity.this, tab.class);
                 intent.putExtra("message", getS());
                 startActivity(intent);
+                find_weather(getS());
             }
         });
     }
@@ -126,57 +176,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    public void find_weather(){
-        final TextView temp, timeData;
-        temp = (TextView) findViewById(R.id.tempMeteo);
-        timeData = (TextView) findViewById(R.id.timeDate);
-
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=carpi,it&appid=";
-        String apiKey = "41afbec1ba89050882ba1ef131e6aa72";
-        url = url + apiKey + "&lang=it&units=metric";
-        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try
-                {
-                    JSONObject obj = response.getJSONObject("main");
-                    JSONArray array = response.getJSONArray("weather");
-                    JSONObject obj2 = array.getJSONObject(0);
-
-                    String temperature = String.valueOf(obj.getDouble("temp"));
-                    String description = obj2.getString("description");
-
-                    temp.setText(temperature);
-
-                    Calendar calendar = Calendar.getInstance();
-                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MM-dd");
-                    String formatted_date = sdf.format(calendar.getTime());
-
-                    timeData.setText(formatted_date);
-                    double t_int = Double.parseDouble(temperature);
-                    double centi = (t_int - 32) / 1.8000;
-                    centi = Math.round(centi);
-                    int i = (int)centi;
-                    temp.setText(String.valueOf(i));
-
-
-
-                }catch(JSONException e)
-                {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }
-        );
-        RequestQueue queue = Volley.newRequestQueue(this);
-        queue.add(jor);
-    }
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
