@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -49,20 +50,20 @@ public class tab_meteo extends Fragment {
                 try
                 {
                     TextView temp, timeData;
-
-                    imgMeteo = (ImageView) getActivity().findViewById(R.id.imageMeteo);
                     temp = (TextView) getActivity().findViewById(R.id.tempMeteo);
                     timeData = (TextView) getActivity().findViewById(R.id.timeDate);
 
+                    VideoView image = (VideoView) getActivity().findViewById(R.id.imageMeteo);
+                    int id = getContext().getResources().getIdentifier("rain.gif", "drawable", getContext().getPackageName());
+                    image.setVideoPath("Drawable/rain.gif");
                     JSONObject obj = response.getJSONObject("main");
                     JSONArray array = response.getJSONArray("weather");
                     //JSONObject obj2 = array.getJSONObject(0);
 
                     String temperature = String.valueOf(obj.getDouble("temp"));
                     //String description = obj2.getString("description");
-                    ImageView image = (ImageView) getActivity().findViewById(R.id.imageMeteo);
-                    int id = getContext().getResources().getIdentifier("rain.gif", "drawable", getContext().getPackageName());
-                    image.setImageResource(id);
+
+                    //image.setImageResource(id);
 
                     temp.setText(temperature);
                     Calendar calendar = Calendar.getInstance();
