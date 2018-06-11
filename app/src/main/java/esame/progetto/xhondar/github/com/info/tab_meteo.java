@@ -1,12 +1,14 @@
 package esame.progetto.xhondar.github.com.info;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,10 +34,6 @@ public class tab_meteo extends Fragment {
     tab t = new tab();
     String s = "";
     public void find_weather(String citta){
-        final TextView temp, timeData;
-        temp = (TextView) getActivity().findViewById(R.id.tempMeteo);
-        timeData = (TextView) getActivity().findViewById(R.id.timeDate);
-
         String url = "http://api.openweathermap.org/data/2.5/weather?q=";
         if(citta == "Lubiana")
         {
@@ -50,17 +48,25 @@ public class tab_meteo extends Fragment {
             public void onResponse(JSONObject response) {
                 try
                 {
+                    TextView temp, timeData;
+
+                    imgMeteo = (ImageView) getActivity().findViewById(R.id.imageMeteo);
+                    temp = (TextView) getActivity().findViewById(R.id.tempMeteo);
+                    timeData = (TextView) getActivity().findViewById(R.id.timeDate);
+
                     JSONObject obj = response.getJSONObject("main");
                     JSONArray array = response.getJSONArray("weather");
                     //JSONObject obj2 = array.getJSONObject(0);
 
                     String temperature = String.valueOf(obj.getDouble("temp"));
                     //String description = obj2.getString("description");
+                    ImageView image = (ImageView) getActivity().findViewById(R.id.imageMeteo);
+                    int id = getContext().getResources().getIdentifier("rain.gif", "drawable", getContext().getPackageName());
+                    image.setImageResource(id);
 
                     temp.setText(temperature);
-
                     Calendar calendar = Calendar.getInstance();
-                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MM-dd");
+                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MM");
                     String formatted_date = sdf.format(calendar.getTime());
 
                     timeData.setText(formatted_date);
@@ -83,6 +89,7 @@ public class tab_meteo extends Fragment {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(jor);
     }
+
     // -----------------------------------------------------------------------------------------------
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
