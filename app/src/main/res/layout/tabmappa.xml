@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.example.android.examp_2.tab_mappa">
+    tools:context="esame.progetto.xhondar.github.com.info.tab_mappa">
 
 <FrameLayout
         android:layout_width="match_parent"
