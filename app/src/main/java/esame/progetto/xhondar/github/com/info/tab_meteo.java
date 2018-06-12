@@ -53,9 +53,9 @@ public class tab_meteo extends Fragment {
                     temp = (TextView) getActivity().findViewById(R.id.tempMeteo);
                     timeData = (TextView) getActivity().findViewById(R.id.timeDate);
 
-                    VideoView image = (VideoView) getActivity().findViewById(R.id.imageMeteo);
+                    ImageView image = (ImageView) getActivity().findViewById(R.id.imageMeteo);
                     int id = getContext().getResources().getIdentifier("rain.gif", "drawable", getContext().getPackageName());
-                    image.setVideoPath("Drawable/rain.gif");
+                    image.setId(id);
                     JSONObject obj = response.getJSONObject("main");
                     JSONArray array = response.getJSONArray("weather");
                     //JSONObject obj2 = array.getJSONObject(0);
