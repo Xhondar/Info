@@ -79,50 +79,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         i++;
         setS(parent.getItemAtPosition(position).toString());
         ImageView img = (ImageView)findViewById(R.id.image);
-        InputStream ims;
         Drawable d;
 
-        switch (getS()){
-            case "Carpi":
-                try {
-                    ims = getAssets().open("carpi.webp");
-                    d = Drawable.createFromStream(ims, null);
-                    img.setImageDrawable(d);
-                    ims .close();
-                } catch(IOException ex) { }
-                break;
-            case "Berlino":
-                try {
-                    ims = getAssets().open("berlino.webp");
-                    d = Drawable.createFromStream(ims, null);
-                    img.setImageDrawable(d);
-                    ims .close();
-                } catch(IOException ex) { }
-                break;
-            case "Trieste":
-                try {
-                    ims = getAssets().open("trieste.webp");
-                    d = Drawable.createFromStream(ims, null);
-                    img.setImageDrawable(d);
-                    ims .close();
-                } catch(IOException ex) { }
-                break;
-            case "Norimberga":
-                try {
-                    ims = getAssets().open("norimberga.webp");
-                    d = Drawable.createFromStream(ims, null);
-                    img.setImageDrawable(d);
-                    ims .close();
-                } catch(IOException ex) { }
-                break;
-            case "Lubiana":
-                try {
-                    ims = getAssets().open("lubiana.webp");
-                    d = Drawable.createFromStream(ims, null);
-                    img.setImageDrawable(d);
-                    ims .close();
-                } catch(IOException ex) { }
-                break;
+        switch (s){
+            case "Carpi": d = getResources().getDrawable(R.drawable.carpi); img.setImageDrawable(d); break;
+            case "Berlino": d = getResources().getDrawable(R.drawable.berlino); img.setImageDrawable(d); break;
+            case "Trieste": d = getResources().getDrawable(R.drawable.trieste); img.setImageDrawable(d); break;
+            case "Lubiana": d = getResources().getDrawable(R.drawable.lubiana); img.setImageDrawable(d); break;
+            case "Norimberga": d = getResources().getDrawable(R.drawable.norimberga); img.setImageDrawable(d); break;
             default: break;
         }
     }

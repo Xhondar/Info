@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,30 +28,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class tab_locale extends Fragment {
-    String[] name_carpi = {"Il Barolino", "Pooja", "L'Incontro", "L'Oste", "Clorofilla", "Pepe Rosa", "IL 25", "La Perla", "Narciso", "Il Carducci"};
-    String[] address_carpi = {"P.Giovanni XXIII, n°110", "Karl Marx, n°3", "delle Magliaie, n°4/1", "I.Martinelli, n° 65", " V.Veneto, n°2", "Guastalla, n°32/A", "San Francesco, n°20", " G.Leopardi, n°44", "S.S. 468 Motta", "Carducci, n°16"};
-    String[] number_carpi = {"059654327", "059645345", "3391852095", "059681260", "059688277", "3393248699", "059645248", "0596229202", "3938794963", "0596229518"};
-    String[] description_carpi = {"Mediterranea", "Indiana, Vegana", "Pesce, Mediterranea", "Vegetariana, Vegana", "Barbecue, Mediterranea", "Italiana", "Pesce, Mediterranea", "Pizza", "Pizza, Pesce", "Mediterranea"};
-
-    String[] name_berlino = {"Boetzow Privat", "Häppies", "Eselin von A.", "Langosch", "Skykitchen", "Mabuhay", "Zur Haxe", "Gaffel Haus", "Kurpfalz", "FACIL"};
-    String[] address_berlino = {"Linienstr. 113", "Dunckerstr. 85", "Wannseebadweg 55", "Petersburger Platz 1", "L.Allee 106", "Koethener Str. 28", "Erich-Weinert-Str. 128", "Dorotheenstr. 65", "Wilmersdorfer Str. 93", "Potsdamer Str. 3"};
-    String[] number_berlino = {"3028095390", "15114984140", "302141284", "3042808100", "304530532620", "302651867", "304216312", "30 31011693", "308836664", "30590051234"};
-    String[] description_berlino = {"Vegetariana", "Fusion", "Pesce, Mediterranea", "Vegetariana", "Vegetariana, Vegana", "Asiatica, Vegetariana", "Tedesca", "Grill, Salutistica", "Tedesca, Europea", "Opzioni senza glutine"};
-
-    String[] name_lubiana = {"Presnica", "Fari's Delice", "Gostilna Dela", "Odprta Kuhna", "Klobasarna", "Hood Burger", "Druga Violina", "Das ist Valter", "Sarajevo '84", "Zbornica"};
-    String[] address_lubiana = {"Presernov trg 2", "M. cesta 34", "Poljanska cesta 7", "Pogacharjev trg 1", "Ciril-Metodov trg 15", "Jamova cesta 105", "Stari trg 21", "Njegosheva cesta 10", "Nazorjeva ulica 12", "Rimska cesta 13"};
-    String[] number_lubiana = {"40797887", "40825533", "59925446", "//", "51605017", "40540411", "82052506", "915895866", "14257106", "40583355"};
-    String[] description_lubiana = {"Salutistica", "Mediorientale", "Mediterranea", "Giapponese", "Europea", "Americana", "Centro-Europea", "Esteuropea", "Barbecue, Europea", "Americana"};
-
-    String[] name_trieste = {"T. speranza", "T. Nerodiseppia", "Osteria Voliga", "Tavernetta", "Hostaria", "O. Maestri", "O. Tempo Perso", "Menarosti", "Spazzacamino", "JOIA"};
-    String[] address_trieste = {"dell'Istria, n°64/A", "Luigi Cadorna, n°23", "della Fornace, n°1", "G. R. M. E C., n°11", "Dell'Eremo, n°243", "della Sorgente, n°6", " Boccaccio, n°20", "del Toro, n°12", "d.Settefontane, n°68", "diaz, n°1"};
-    String[] number_trieste = {"040762624", "040301377", "040309606", "040224275", "040910979", "040636801", "3285319928", "040661077", "040945160", "0403478940"};
-    String[] description_trieste = {"Pesce, Mediterranea", "Pesce, Mediterranea", "Pesce, Mediterranea", "Pesce, Mediterranea", "Pesce, Mediterranea", "Pesce, Mediterranea", "Pesce, Mediterranea", "Pesce, Mediterranea", "Pesce, Mediterranea", "Pesce, Mediterranea"};
-
-    String[] name_norimberga = {"Troedelstuben", "Albrecht D. S.", "Bohm's H.", "Hutt'n E.& T.", "Nurnberger A.", "Z. Albrecht D. H.", "Schaufelewart", "Hausbrauerei A.", "kopernikus", "Gaststatte K. B."};
-    String[] address_norimberga = {"Troedelmarkt 30", "Albrecht-Duerer-Str. 6", "Theatergasse 19", "Bergstr. 20", "Burgstr. 19", "O. Schmiedgasse 58", "Schweiggerstr. 19", "Bergstr. 19", "H. Insel Schuett 34", "Obere Woerthstr. 2"};
-    String[] number_norimberga = {"91136772767", "911227209", "911224465", "9112019881", "911507169", "91121144940", "9114597325", "9112449859", "9112427740", "9112373171"};
-    String[] description_norimberga = {"Vegetariana", "Centro-Europea", "Centro-Europea", "Centro-Europea", "Bar, Europea", "Centro-Europea", "Gastronomia", "Bar, Pub", "Tedesca, Polacca", "Centro-Europea"};
+    private static final String TAG = "tab_locale";
 
     String[] link_carpi = {"https://www.tripadvisor.it/Restaurant_Review-g670816-d2474842-Reviews-Il_Barolino-Carpi_Province_of_Modena_Emilia_Romagna.html", "https://www.tripadvisor.it/Restaurant_Review-g670816-d2653654-Reviews-Pooja-Carpi_Province_of_Modena_Emilia_Romagna.html", "https://www.tripadvisor.it/Restaurant_Review-g670816-d2235927-Reviews-Ristorante_L_Incontro-Carpi_Province_of_Modena_Emilia_Romagna.html", "https://www.tripadvisor.it/Restaurant_Review-g4442668-d3242841-Reviews-Ristorante_L_Oste-Fossoli_Carpi_Province_of_Modena_Emilia_Romagna.html", "https://www.tripadvisor.it/Restaurant_Review-g670816-d2640640-Reviews-Clorofilla-Carpi_Province_of_Modena_Emilia_Romagna.html", "https://www.tripadvisor.it/Restaurant_Review-g670816-d2039414-Reviews-Ristorante_Pepe_Rosa-Carpi_Province_of_Modena_Emilia_Romagna.html", "https://www.tripadvisor.it/Restaurant_Review-g670816-d1905649-Reviews-Ristorante_Il_25-Carpi_Province_of_Modena_Emilia_Romagna.html", "https://www.tripadvisor.it/Restaurant_Review-g670816-d3469119-Reviews-LA_PERLA_Pizzeria_da_asporto-Carpi_Province_of_Modena_Emilia_Romagna.html", "https://www.tripadvisor.it/Restaurant_Review-g670816-d7347174-Reviews-Narciso_Ristorante-Carpi_Province_of_Modena_Emilia_Romagna.html", "https://www.tripadvisor.it/Restaurant_Review-g670816-d2301997-Reviews-Il_Carducci-Carpi_Province_of_Modena_Emilia_Romagna.html"};
     String[] link_berlino = {"https://www.tripadvisor.it/Restaurant_Review-g187323-d1837132-Reviews-Boetzow_Privat-Berlin.html", "https://www.tripadvisor.it/Restaurant_Review-g187323-d8025081-Reviews-Happies-Berlin.html", "https://www.tripadvisor.it/Restaurant_Review-g187323-d2456695-Reviews-Club_Restaurant_Das_Team_Die_Eselin_von_A-Berlin.html", "https://www.tripadvisor.it/Restaurant_Review-g187323-d10376233-Reviews-Restaurant_Langosch-Berlin.html", "https://www.tripadvisor.it/Restaurant_Review-g187323-d4261461-Reviews-Skykitchen-Berlin.html", "https://www.tripadvisor.it/Restaurant_Review-g187323-d3422489-Reviews-Mabuhay_Indonesian_Restaurant-Berlin.html", "https://www.tripadvisor.it/Restaurant_Review-g187323-d1344170-Reviews-Zur_Haxe-Berlin.html", "https://www.tripadvisor.it/Restaurant_Review-g187323-d2071216-Reviews-Gaffel_Haus_Berlin-Berlin.html", "https://www.tripadvisor.it/Restaurant_Review-g187323-d1341765-Reviews-Kurpfalz_Weinstuben-Berlin.html", "https://www.tripadvisor.it/Restaurant_Review-g187323-d695657-Reviews-FACIL-Berlin.html"};
@@ -67,10 +45,9 @@ public class tab_locale extends Fragment {
         t = (tab) getActivity();
         s = t.getS();
 
-        ListView listView = rootView.findViewById(R.id.list);
-        CustomAdapter customAdapter = new CustomAdapter();
-        listView.setAdapter(customAdapter);
+        Log.d(TAG, "onCreate: Started.");
 
+        ListView listView = (ListView) rootView.findViewById(R.id.list);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -109,101 +86,146 @@ public class tab_locale extends Fragment {
             }
         });
 
+        switch (s){
+            case "Carpi":
+                Local zero_carpi = new Local("Il Barolino", "P.Giovanni XXIII, n°110", "059654327", "Mediterranea", "drawable://" + R.drawable.carpi_tablocali_barolino, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local uno_carpi = new Local("Pooja", "Karl Marx, n°3", "059645345", "Indiana, Vegana", "drawable://" + R.drawable.carpi_tablocali_pooja, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local due_carpi = new Local("L'Incontro", "delle Magliaie, n°4/1", "3391852095", "Pesce, Mediterranea", "drawable://" + R.drawable.carpi_tablocali_lincontro, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local tre_carpi = new Local("L'Oste", "I.Martinelli, n° 65", "059681260", "Vegetariana, Vegana", "drawable://" + R.drawable.carpi_tablocali_loste, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local quattro_carpi = new Local("Clorofilla", " V.Veneto, n°2", "059688277", "Barbecue, Mediterranea", "drawable://" + R.drawable.carpi_tablocali_clorofilla, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local cinque_carpi = new Local("Pepe Rosa", "Guastalla, n°32/A", "3393248699", "Italiana", "drawable://" + R.drawable.carpi_tablocali_peperosa, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local sei_carpi = new Local("IL 25", "San Francesco, n°20", "059645248", "Pesce, Mediterranea", "drawable://" + R.drawable.carpi_tablocali_il25, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local sette_carpi = new Local("La Perla", "G.Leopardi, n°44", "0596229202", "Pizza", "drawable://" + R.drawable.carpi_tablocal_laperla, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local otto_carpi = new Local("Narciso", "S.S. 468 Motta", "3938794963", "Pizza, Pesce", "drawable://" + R.drawable.carpi_tablocal_narciso, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local nove_carpi = new Local("Il Carducci", "Carducci, n°16", "0596229518", "Mediterranea", "drawable://" + R.drawable.carpi_tablocal_carducci, "drawable://" + R.drawable.quattro_stelle);
+
+                ArrayList<Local> localList_carpi = new ArrayList<>();
+                localList_carpi.add(zero_carpi);
+                localList_carpi.add(uno_carpi);
+                localList_carpi.add(due_carpi);
+                localList_carpi.add(tre_carpi);
+                localList_carpi.add(quattro_carpi);
+                localList_carpi.add(cinque_carpi);
+                localList_carpi.add(sei_carpi);
+                localList_carpi.add(sette_carpi);
+                localList_carpi.add(otto_carpi);
+                localList_carpi.add(nove_carpi);
+
+                LocalListAdapter adapter_carpi = new LocalListAdapter(getContext(), R.layout.list_item, localList_carpi);
+                listView.setAdapter(adapter_carpi);
+
+                break;
+            case "Berlino":
+                Local zero_berlino = new Local("Boetzow Privat", "Linienstr. 113", "3028095390", "Vegetariana", "drawable://" + R.drawable.berlino_tablocali_boetzowprivat, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local uno_berlino = new Local("Häppies", "Dunckerstr. 85", "15114984140", "Fusion", "drawable://" + R.drawable.berlino_tablocali_happies, "drawable://" + R.drawable.cinque_stelle);
+                Local due_berlino = new Local("Eselin von A.", "Wannseebadweg 55", "302141284", "Pesce, Mediterranea", "drawable://" + R.drawable.berlino_tablocali_dieeselinvona, "drawable://" + R.drawable.cinque_stelle);
+                Local tre_berlino = new Local("Langosch", "Petersburger Platz 1", "3042808100", "Vegetariana", "drawable://" + R.drawable.berlino_tablocali_langosch, "drawable://" + R.drawable.cinque_stelle);
+                Local quattro_berlino = new Local("Skykitchen", "L.Allee 106", "304530532620", "Vegetariana, Vegana", "drawable://" + R.drawable.berlino_tablocali_skykitchen, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local cinque_berlino = new Local("Mabuhay", "Koethener Str. 28", "302651867", "Asiatica, Vegetariana", "drawable://" + R.drawable.berlino_tablocali_mabuhay, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local sei_berlino = new Local("Zur Haxe", "Erich-Weinert-Str. 128", "304216312", "Tedesca", "drawable://" + R.drawable.berlino_tablocali_zurhaxe, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local sette_berlino = new Local("Gaffel Haus", "Dorotheenstr. 65", "3031011693", "Grill, Salutistica", "drawable://" + R.drawable.berlino_tablocali_gaffelhaus, "drawable://" + R.drawable.quattro_stelle);
+                Local otto_berlino = new Local("Kurpfalz", "Wilmersdorfer Str. 93", "308836664", "Tedesca, Europea", "drawable://" + R.drawable.berlino_tablocali_kurpfalzweinstuben, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local nove_berlino = new Local("FACIL", "Potsdamer Str. 3", "30590051234", "Opzioni senza glutine", "drawable://" + R.drawable.berlino_tablocali_facil, "drawable://" + R.drawable.quattroemezzo_stelle);
+
+                ArrayList<Local> localList_berlino = new ArrayList<>();
+                localList_berlino.add(zero_berlino);
+                localList_berlino.add(uno_berlino);
+                localList_berlino.add(due_berlino);
+                localList_berlino.add(tre_berlino);
+                localList_berlino.add(quattro_berlino);
+                localList_berlino.add(cinque_berlino);
+                localList_berlino.add(sei_berlino);
+                localList_berlino.add(sette_berlino);
+                localList_berlino.add(otto_berlino);
+                localList_berlino.add(nove_berlino);
+
+                LocalListAdapter adapter_berlino = new LocalListAdapter(getContext(), R.layout.list_item, localList_berlino);
+                listView.setAdapter(adapter_berlino);
+                break;
+            case "Lubiana":
+                Local zero_lubiana = new Local("Presnica", "Presernov trg 2", "40797887", "Salutistica", "drawable://" + R.drawable.lubiana_tablocali_presnica, "drawable://" + R.drawable.cinque_stelle);
+                Local uno_lubiana = new Local("Fari's Delice", "M. cesta 34", "40825533", "Mediorientale", "drawable://" + R.drawable.lubiana_tablocali_farisdelice, "drawable://" + R.drawable.cinque_stelle);
+                Local due_lubiana = new Local("Gostilna Dela", "Poljanska cesta 7", "59925446", "Mediterranea", "drawable://" + R.drawable.lubiana_tablocali_gostilnadela, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local tre_lubiana = new Local("Odprta Kuhna", "Pogacharjev trg 1", "//", "Giapponese", "drawable://" + R.drawable.lubiana_tablocali_odprtakuhna, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local quattro_lubiana = new Local("Klobasarna", "Ciril-Metodov trg 15", "51605017", "Europea", "drawable://" + R.drawable.lubiana_tablocali_klobasarna, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local cinque_lubiana = new Local("Hood Burger", "Jamova cesta 105", "40540411", "Americana", "drawable://" + R.drawable.lubiana_tablocali_hoodburger, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local sei_lubiana = new Local("Druga Violina", "Stari trg 21", "82052506", "Centro-Europea", "drawable://" + R.drawable.lubiana_tablocali_drugaviolina, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local sette_lubiana = new Local("Das ist Valter", "Njegosheva cesta 10", "915895866", "Esteuropea", "drawable://" + R.drawable.lubiana_tablocali_dasistvalter, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local otto_lubiana = new Local("Sarajevo '84", "Nazorjeva ulica 12", "14257106", "Barbecue, Europea", "drawable://" + R.drawable.lubiana_tablocali_sarajevo84, "drawable://" + R.drawable.quattro_stelle);
+                Local nove_lubiana = new Local("Zbornica", "Rimska cesta 13", "40583355", "Americana", "drawable://" + R.drawable.lubiana_tablocali_zbornica, "drawable://" + R.drawable.cinque_stelle);
+
+                ArrayList<Local> localList_lubiana = new ArrayList<>();
+                localList_lubiana.add(zero_lubiana);
+                localList_lubiana.add(uno_lubiana);
+                localList_lubiana.add(due_lubiana);
+                localList_lubiana.add(tre_lubiana);
+                localList_lubiana.add(quattro_lubiana);
+                localList_lubiana.add(cinque_lubiana);
+                localList_lubiana.add(sei_lubiana);
+                localList_lubiana.add(sette_lubiana);
+                localList_lubiana.add(otto_lubiana);
+                localList_lubiana.add(nove_lubiana);
+
+                LocalListAdapter adapter_lubiana = new LocalListAdapter(getContext(), R.layout.list_item, localList_lubiana);
+                listView.setAdapter(adapter_lubiana);
+                break;
+            case "Trieste":
+                Local zero_trieste = new Local("T. speranza", "dell'Istria, n°64/A", "040762624", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_trattoriaallasperanza, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local uno_trieste = new Local("T. Nerodiseppia", "Luigi Cadorna, n°23", "040301377", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_trattorianerodiseppia, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local due_trieste = new Local("Osteria Voliga", "della Fornace, n°1", "040309606", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_osteriadimareallavoliga, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local tre_trieste = new Local("Tavernetta", "G. R. M. E C., n°11", "040224275", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_tavernettaalmolo, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local quattro_trieste = new Local("Hostaria", "Dell'Eremo, n°243", "040910979", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_hostariaai3magnoni, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local cinque_trieste = new Local("O. Maestri", "della Sorgente, n°6", "040636801", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_osteriaaimaestri, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local sei_trieste = new Local("O. Tempo Perso", "Boccaccio, n°20", "3285319928", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_osteriaaltempoperso, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local sette_trieste = new Local("Menarosti", "del Toro, n°12", "040661077", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_ristorantemenarosti, "drawable://" + R.drawable.quattro_stelle);
+                Local otto_trieste = new Local("Spazzacamino", "d.Settefontane, n°68", "040945160", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_anticospazzacamino, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local nove_trieste = new Local("JOIA", "diaz, n°1", "0403478940", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_joia, "drawable://" + R.drawable.quattroemezzo_stelle);
+
+                ArrayList<Local> localList_trieste = new ArrayList<>();
+                localList_trieste.add(zero_trieste);
+                localList_trieste.add(uno_trieste);
+                localList_trieste.add(due_trieste);
+                localList_trieste.add(tre_trieste);
+                localList_trieste.add(quattro_trieste);
+                localList_trieste.add(cinque_trieste);
+                localList_trieste.add(sei_trieste);
+                localList_trieste.add(sette_trieste);
+                localList_trieste.add(otto_trieste);
+                localList_trieste.add(nove_trieste);
+
+                LocalListAdapter adapter_trieste = new LocalListAdapter(getContext(), R.layout.list_item, localList_trieste);
+                listView.setAdapter(adapter_trieste);
+                break;
+            case "Norimberga":
+                Local zero_norimberga = new Local("Troedelstuben", "Troedelmarkt 30", "91136772767", "Vegetariana", "drawable://" + R.drawable.norimberga_tablocali_troedelstuben, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local uno_norimberga = new Local("Albrecht D. S.", "Albrecht-Duerer-Str. 6", "911227209", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_albrechtdurerstube, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local due_norimberga = new Local("Bohm's H.", "Theatergasse 19", "911224465", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_bohmsherrenkeller, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local tre_norimberga = new Local("Hutt'n E.& T.", "Bergstr. 20", "9112019881", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_huttnessentrinken, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local quattro_norimberga = new Local("Nurnberger A.", "Burgstr. 19", "911507169", "Bar, Europea", "drawable://" + R.drawable.norimberga_tablocali_nurnbergeralm, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local cinque_norimberga = new Local("Z. Albrecht D. H.", "O. Schmiedgasse 58", "91121144940", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_zumalbrechtduererhaus, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local sei_norimberga = new Local("Schaufelewart", "Schweiggerstr. 19", "9114597325", "Gastronomia", "drawable://" + R.drawable.norimberga_tablocali_schaufelewartschaft, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local sette_norimberga = new Local("Hausbrauerei A.", "Bergstr. 19", "9112449859", "Bar, Pub", "drawable://" + R.drawable.norimberga_tablocali_hausbrauereialtstadthof, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local otto_norimberga = new Local("kopernikus", "H. Insel Schuett 34", "9112427740", "Tedesca, Polacca", "drawable://" + R.drawable.norimberga_tablocali_restaurationkopernikus, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local nove_norimberga = new Local("Gaststatte K. B.", "Obere Woerthstr. 2", "9112373171", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_gaststattekarlsbruckla, "drawable://" + R.drawable.quattro_stelle);
+
+                ArrayList<Local> localList_norimberga = new ArrayList<>();
+                localList_norimberga.add(zero_norimberga);
+                localList_norimberga.add(uno_norimberga);
+                localList_norimberga.add(due_norimberga);
+                localList_norimberga.add(tre_norimberga);
+                localList_norimberga.add(quattro_norimberga);
+                localList_norimberga.add(cinque_norimberga);
+                localList_norimberga.add(sei_norimberga);
+                localList_norimberga.add(sette_norimberga);
+                localList_norimberga.add(otto_norimberga);
+                localList_norimberga.add(nove_norimberga);
+
+                LocalListAdapter adapter_norimberga = new LocalListAdapter(getContext(), R.layout.list_item, localList_norimberga);
+                listView.setAdapter(adapter_norimberga);
+                break;
+            default: break;
+        }
+
         return rootView;
-    }
-
-    String[] images_1;
-    String[] images_2;
-
-    class CustomAdapter extends BaseAdapter{
-        @Override
-        public int getCount() {
-            return name_carpi.length;
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return 0;
-        }
-
-        private  Bitmap readImageFromAssets_1(String path) {
-            Bitmap bmp;
-            try {
-                InputStream stream = getContext().getAssets().open(path, Context.MODE_PRIVATE);
-                bmp = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(stream), 400, 400, true);
-            } catch (Exception ignore) {
-                bmp = null;
-            }
-            return bmp;
-        }
-        private  Bitmap readImageFromAssets_2(String path) {
-            Bitmap bmp;
-            try {
-                InputStream stream = getContext().getAssets().open(path, Context.MODE_PRIVATE);
-                bmp = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(stream), 615, 325, true);
-            } catch (Exception ignore) {
-                bmp = null;
-            }
-            return bmp;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup parent) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,null);
-
-            ImageView imageView1 = view.findViewById(R.id.image1);
-            ImageView imageView2 = view.findViewById(R.id.image2);
-            TextView textView1 = view.findViewById(R.id.name);
-            TextView textView2 = view.findViewById(R.id.address);
-            TextView textView3 = view.findViewById(R.id.number);
-            TextView textView4 = view.findViewById(R.id.description);
-            try {
-                images_1 = getContext().getAssets().list(s.toLowerCase() + "_stelle");
-                imageView1.setImageBitmap(readImageFromAssets_1(s.toLowerCase() + "_stelle/" + images_1[i]));
-                images_2 = getContext().getAssets().list(s.toLowerCase());
-                imageView2.setImageBitmap(readImageFromAssets_2(s.toLowerCase() + "/" + images_2[i]));
-            } catch (IOException e) {
-            }
-            switch(s){
-                case "Carpi":
-                    textView1.setText(name_carpi[i]);
-                    textView2.setText(address_carpi[i]);
-                    textView3.setText(number_carpi[i]);
-                    textView4.setText(description_carpi[i]);
-                    break;
-                case "Berlino":
-                    textView1.setText(name_berlino[i]);
-                    textView2.setText(address_berlino[i]);
-                    textView3.setText(number_berlino[i]);
-                    textView4.setText(description_berlino[i]);
-                    break;
-                case "Lubiana":
-                    textView1.setText(name_lubiana[i]);
-                    textView2.setText(address_lubiana[i]);
-                    textView3.setText(number_lubiana[i]);
-                    textView4.setText(description_lubiana[i]);
-                    break;
-                case "Trieste":
-                    textView1.setText(name_trieste[i]);
-                    textView2.setText(address_trieste[i]);
-                    textView3.setText(number_trieste[i]);
-                    textView4.setText(description_trieste[i]);
-                    break;
-                case "Norimberga":
-                    textView1.setText(name_norimberga[i]);
-                    textView2.setText(address_norimberga[i]);
-                    textView3.setText(number_norimberga[i]);
-                    textView4.setText(description_norimberga[i]);
-                    break;
-                default: break;
-            }
-
-            return view;
-        }
     }
 }
