@@ -6,7 +6,11 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
+import android.media.Rating;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,11 +23,13 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -47,6 +53,8 @@ public class tab_locale extends Fragment {
 
         Log.d(TAG, "onCreate: Started.");
 
+
+
         ListView listView = (ListView) rootView.findViewById(R.id.list);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,26 +64,31 @@ public class tab_locale extends Fragment {
                 Intent intent;
                 switch (s){
                     case "Carpi":
+                        //0) 1) 2) 4) 5) 6) 7) 8) 9)
                         link = Uri.parse(link_carpi[position]);
                         intent = new Intent(Intent.ACTION_VIEW, link);
                         startActivity(intent);
                         break;
                     case "Berlino":
+                        //0) 1) 2) 4) 5) 6) 7) 8) 9)
                         link = Uri.parse(link_berlino[position]);
                         intent = new Intent(Intent.ACTION_VIEW, link);
                         startActivity(intent);
                         break;
                     case "Norimberga":
+                        //0) 1) 2) 4) 5) 6) 7) 8) 9)
                         link = Uri.parse(link_norimberga[position]);
                         intent = new Intent(Intent.ACTION_VIEW, link);
                         startActivity(intent);
                         break;
                     case "Lubiana":
+                        //0) 1) 2) 4) 5) 6) 7) 8) 9)
                         link = Uri.parse(link_lubiana[position]);
                         intent = new Intent(Intent.ACTION_VIEW, link);
                         startActivity(intent);
                         break;
                     case "Trieste":
+                        //0) 1) 2) 4) 5) 6) 7) 8) 9)
                         link = Uri.parse(link_trieste[position]);
                         intent = new Intent(Intent.ACTION_VIEW, link);
                         startActivity(intent);
@@ -88,16 +101,16 @@ public class tab_locale extends Fragment {
 
         switch (s){
             case "Carpi":
-                Local zero_carpi = new Local("Il Barolino", "P.Giovanni XXIII, n°110", "059654327", "Mediterranea", "drawable://" + R.drawable.carpi_tablocali_barolino, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local uno_carpi = new Local("Pooja", "Karl Marx, n°3", "059645345", "Indiana, Vegana", "drawable://" + R.drawable.carpi_tablocali_pooja, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local due_carpi = new Local("L'Incontro", "delle Magliaie, n°4/1", "3391852095", "Pesce, Mediterranea", "drawable://" + R.drawable.carpi_tablocali_lincontro, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local tre_carpi = new Local("L'Oste", "I.Martinelli, n° 65", "059681260", "Vegetariana, Vegana", "drawable://" + R.drawable.carpi_tablocali_loste, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local quattro_carpi = new Local("Clorofilla", " V.Veneto, n°2", "059688277", "Barbecue, Mediterranea", "drawable://" + R.drawable.carpi_tablocali_clorofilla, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local cinque_carpi = new Local("Pepe Rosa", "Guastalla, n°32/A", "3393248699", "Italiana", "drawable://" + R.drawable.carpi_tablocali_peperosa, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local sei_carpi = new Local("IL 25", "San Francesco, n°20", "059645248", "Pesce, Mediterranea", "drawable://" + R.drawable.carpi_tablocali_il25, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local sette_carpi = new Local("La Perla", "G.Leopardi, n°44", "0596229202", "Pizza", "drawable://" + R.drawable.carpi_tablocal_laperla, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local otto_carpi = new Local("Narciso", "S.S. 468 Motta", "3938794963", "Pizza, Pesce", "drawable://" + R.drawable.carpi_tablocal_narciso, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local nove_carpi = new Local("Il Carducci", "Carducci, n°16", "0596229518", "Mediterranea", "drawable://" + R.drawable.carpi_tablocal_carducci, "drawable://" + R.drawable.quattro_stelle);
+                Local zero_carpi = new Local("Il Barolino", "P.Giovanni XXIII, n°110", "059654327", "Mediterranea", "drawable://" + R.drawable.carpi_tablocali_barolino);
+                Local uno_carpi = new Local("Pooja", "Karl Marx, n°3", "059645345", "Indiana, Vegana", "drawable://" + R.drawable.carpi_tablocali_pooja);
+                Local due_carpi = new Local("L'Incontro", "delle Magliaie, n°4/1", "3391852095", "Pesce, Mediterranea", "drawable://" + R.drawable.carpi_tablocali_lincontro);
+                Local tre_carpi = new Local("L'Oste", "I.Martinelli, n° 65", "059681260", "Vegetariana, Vegana", "drawable://" + R.drawable.carpi_tablocali_loste);
+                Local quattro_carpi = new Local("Clorofilla", " V.Veneto, n°2", "059688277", "Barbecue, Mediterranea", "drawable://" + R.drawable.carpi_tablocali_clorofilla);
+                Local cinque_carpi = new Local("Pepe Rosa", "Guastalla, n°32/A", "3393248699", "Italiana", "drawable://" + R.drawable.carpi_tablocali_peperosa);
+                Local sei_carpi = new Local("IL 25", "San Francesco, n°20", "059645248", "Pesce, Mediterranea", "drawable://" + R.drawable.carpi_tablocali_il25);
+                Local sette_carpi = new Local("La Perla", "G.Leopardi, n°44", "0596229202", "Pizza", "drawable://" + R.drawable.carpi_tablocal_laperla);
+                Local otto_carpi = new Local("Narciso", "S.S. 468 Motta", "3938794963", "Pizza, Pesce", "drawable://" + R.drawable.carpi_tablocal_narciso);
+                Local nove_carpi = new Local("Il Carducci", "Carducci, n°16", "0596229518", "Mediterranea", "drawable://" + R.drawable.carpi_tablocal_carducci);
 
                 ArrayList<Local> localList_carpi = new ArrayList<>();
                 localList_carpi.add(zero_carpi);
@@ -116,16 +129,16 @@ public class tab_locale extends Fragment {
 
                 break;
             case "Berlino":
-                Local zero_berlino = new Local("Boetzow Privat", "Linienstr. 113", "3028095390", "Vegetariana", "drawable://" + R.drawable.berlino_tablocali_boetzowprivat, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local uno_berlino = new Local("Häppies", "Dunckerstr. 85", "15114984140", "Fusion", "drawable://" + R.drawable.berlino_tablocali_happies, "drawable://" + R.drawable.cinque_stelle);
-                Local due_berlino = new Local("Eselin von A.", "Wannseebadweg 55", "302141284", "Pesce, Mediterranea", "drawable://" + R.drawable.berlino_tablocali_dieeselinvona, "drawable://" + R.drawable.cinque_stelle);
-                Local tre_berlino = new Local("Langosch", "Petersburger Platz 1", "3042808100", "Vegetariana", "drawable://" + R.drawable.berlino_tablocali_langosch, "drawable://" + R.drawable.cinque_stelle);
-                Local quattro_berlino = new Local("Skykitchen", "L.Allee 106", "304530532620", "Vegetariana, Vegana", "drawable://" + R.drawable.berlino_tablocali_skykitchen, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local cinque_berlino = new Local("Mabuhay", "Koethener Str. 28", "302651867", "Asiatica, Vegetariana", "drawable://" + R.drawable.berlino_tablocali_mabuhay, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local sei_berlino = new Local("Zur Haxe", "Erich-Weinert-Str. 128", "304216312", "Tedesca", "drawable://" + R.drawable.berlino_tablocali_zurhaxe, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local sette_berlino = new Local("Gaffel Haus", "Dorotheenstr. 65", "3031011693", "Grill, Salutistica", "drawable://" + R.drawable.berlino_tablocali_gaffelhaus, "drawable://" + R.drawable.quattro_stelle);
-                Local otto_berlino = new Local("Kurpfalz", "Wilmersdorfer Str. 93", "308836664", "Tedesca, Europea", "drawable://" + R.drawable.berlino_tablocali_kurpfalzweinstuben, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local nove_berlino = new Local("FACIL", "Potsdamer Str. 3", "30590051234", "Opzioni senza glutine", "drawable://" + R.drawable.berlino_tablocali_facil, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local zero_berlino = new Local("Boetzow Privat", "Linienstr. 113", "3028095390", "Vegetariana", "drawable://" + R.drawable.berlino_tablocali_boetzowprivat);
+                Local uno_berlino = new Local("Häppies", "Dunckerstr. 85", "15114984140", "Fusion", "drawable://" + R.drawable.berlino_tablocali_happies);
+                Local due_berlino = new Local("Eselin von A.", "Wannseebadweg 55", "302141284", "Pesce, Mediterranea", "drawable://" + R.drawable.berlino_tablocali_dieeselinvona);
+                Local tre_berlino = new Local("Langosch", "Petersburger Platz 1", "3042808100", "Vegetariana", "drawable://" + R.drawable.berlino_tablocali_langosch);
+                Local quattro_berlino = new Local("Skykitchen", "L.Allee 106", "304530532620", "Vegetariana, Vegana", "drawable://" + R.drawable.berlino_tablocali_skykitchen);
+                Local cinque_berlino = new Local("Mabuhay", "Koethener Str. 28", "302651867", "Asiatica, Vegetariana", "drawable://" + R.drawable.berlino_tablocali_mabuhay);
+                Local sei_berlino = new Local("Zur Haxe", "Erich-Weinert-Str. 128", "304216312", "Tedesca", "drawable://" + R.drawable.berlino_tablocali_zurhaxe);
+                Local sette_berlino = new Local("Gaffel Haus", "Dorotheenstr. 65", "3031011693", "Grill, Salutistica", "drawable://" + R.drawable.berlino_tablocali_gaffelhaus);
+                Local otto_berlino = new Local("Kurpfalz", "Wilmersdorfer Str. 93", "308836664", "Tedesca, Europea", "drawable://" + R.drawable.berlino_tablocali_kurpfalzweinstuben);
+                Local nove_berlino = new Local("FACIL", "Potsdamer Str. 3", "30590051234", "Opzioni senza glutine", "drawable://" + R.drawable.berlino_tablocali_facil);
 
                 ArrayList<Local> localList_berlino = new ArrayList<>();
                 localList_berlino.add(zero_berlino);
@@ -143,16 +156,16 @@ public class tab_locale extends Fragment {
                 listView.setAdapter(adapter_berlino);
                 break;
             case "Lubiana":
-                Local zero_lubiana = new Local("Presnica", "Presernov trg 2", "40797887", "Salutistica", "drawable://" + R.drawable.lubiana_tablocali_presnica, "drawable://" + R.drawable.cinque_stelle);
-                Local uno_lubiana = new Local("Fari's Delice", "M. cesta 34", "40825533", "Mediorientale", "drawable://" + R.drawable.lubiana_tablocali_farisdelice, "drawable://" + R.drawable.cinque_stelle);
-                Local due_lubiana = new Local("Gostilna Dela", "Poljanska cesta 7", "59925446", "Mediterranea", "drawable://" + R.drawable.lubiana_tablocali_gostilnadela, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local tre_lubiana = new Local("Odprta Kuhna", "Pogacharjev trg 1", "//", "Giapponese", "drawable://" + R.drawable.lubiana_tablocali_odprtakuhna, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local quattro_lubiana = new Local("Klobasarna", "Ciril-Metodov trg 15", "51605017", "Europea", "drawable://" + R.drawable.lubiana_tablocali_klobasarna, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local cinque_lubiana = new Local("Hood Burger", "Jamova cesta 105", "40540411", "Americana", "drawable://" + R.drawable.lubiana_tablocali_hoodburger, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local sei_lubiana = new Local("Druga Violina", "Stari trg 21", "82052506", "Centro-Europea", "drawable://" + R.drawable.lubiana_tablocali_drugaviolina, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local sette_lubiana = new Local("Das ist Valter", "Njegosheva cesta 10", "915895866", "Esteuropea", "drawable://" + R.drawable.lubiana_tablocali_dasistvalter, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local otto_lubiana = new Local("Sarajevo '84", "Nazorjeva ulica 12", "14257106", "Barbecue, Europea", "drawable://" + R.drawable.lubiana_tablocali_sarajevo84, "drawable://" + R.drawable.quattro_stelle);
-                Local nove_lubiana = new Local("Zbornica", "Rimska cesta 13", "40583355", "Americana", "drawable://" + R.drawable.lubiana_tablocali_zbornica, "drawable://" + R.drawable.cinque_stelle);
+                Local zero_lubiana = new Local("Presnica", "Presernov trg 2", "40797887", "Salutistica", "drawable://" + R.drawable.lubiana_tablocali_presnica);
+                Local uno_lubiana = new Local("Fari's Delice", "M. cesta 34", "40825533", "Mediorientale", "drawable://" + R.drawable.lubiana_tablocali_farisdelice);
+                Local due_lubiana = new Local("Gostilna Dela", "Poljanska cesta 7", "59925446", "Mediterranea", "drawable://" + R.drawable.lubiana_tablocali_gostilnadela);
+                Local tre_lubiana = new Local("Odprta Kuhna", "Pogacharjev trg 1", "//", "Giapponese", "drawable://" + R.drawable.lubiana_tablocali_odprtakuhna);
+                Local quattro_lubiana = new Local("Klobasarna", "Ciril-Metodov trg 15", "51605017", "Europea", "drawable://" + R.drawable.lubiana_tablocali_klobasarna);
+                Local cinque_lubiana = new Local("Hood Burger", "Jamova cesta 105", "40540411", "Americana", "drawable://" + R.drawable.lubiana_tablocali_hoodburger);
+                Local sei_lubiana = new Local("Druga Violina", "Stari trg 21", "82052506", "Centro-Europea", "drawable://" + R.drawable.lubiana_tablocali_drugaviolina);
+                Local sette_lubiana = new Local("Das ist Valter", "Njegosheva cesta 10", "915895866", "Esteuropea", "drawable://" + R.drawable.lubiana_tablocali_dasistvalter);
+                Local otto_lubiana = new Local("Sarajevo '84", "Nazorjeva ulica 12", "14257106", "Barbecue, Europea", "drawable://" + R.drawable.lubiana_tablocali_sarajevo84);
+                Local nove_lubiana = new Local("Zbornica", "Rimska cesta 13", "40583355", "Americana", "drawable://" + R.drawable.lubiana_tablocali_zbornica);
 
                 ArrayList<Local> localList_lubiana = new ArrayList<>();
                 localList_lubiana.add(zero_lubiana);
@@ -170,16 +183,16 @@ public class tab_locale extends Fragment {
                 listView.setAdapter(adapter_lubiana);
                 break;
             case "Trieste":
-                Local zero_trieste = new Local("T. speranza", "dell'Istria, n°64/A", "040762624", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_trattoriaallasperanza, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local uno_trieste = new Local("T. Nerodiseppia", "Luigi Cadorna, n°23", "040301377", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_trattorianerodiseppia, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local due_trieste = new Local("Osteria Voliga", "della Fornace, n°1", "040309606", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_osteriadimareallavoliga, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local tre_trieste = new Local("Tavernetta", "G. R. M. E C., n°11", "040224275", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_tavernettaalmolo, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local quattro_trieste = new Local("Hostaria", "Dell'Eremo, n°243", "040910979", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_hostariaai3magnoni, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local cinque_trieste = new Local("O. Maestri", "della Sorgente, n°6", "040636801", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_osteriaaimaestri, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local sei_trieste = new Local("O. Tempo Perso", "Boccaccio, n°20", "3285319928", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_osteriaaltempoperso, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local sette_trieste = new Local("Menarosti", "del Toro, n°12", "040661077", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_ristorantemenarosti, "drawable://" + R.drawable.quattro_stelle);
-                Local otto_trieste = new Local("Spazzacamino", "d.Settefontane, n°68", "040945160", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_anticospazzacamino, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local nove_trieste = new Local("JOIA", "diaz, n°1", "0403478940", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_joia, "drawable://" + R.drawable.quattroemezzo_stelle);
+                Local zero_trieste = new Local("T. speranza", "dell'Istria, n°64/A", "040762624", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_trattoriaallasperanza);
+                Local uno_trieste = new Local("T. Nerodiseppia", "Luigi Cadorna, n°23", "040301377", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_trattorianerodiseppia);
+                Local due_trieste = new Local("Osteria Voliga", "della Fornace, n°1", "040309606", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_osteriadimareallavoliga);
+                Local tre_trieste = new Local("Tavernetta", "G. R. M. E C., n°11", "040224275", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_tavernettaalmolo);
+                Local quattro_trieste = new Local("Hostaria", "Dell'Eremo, n°243", "040910979", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_hostariaai3magnoni);
+                Local cinque_trieste = new Local("O. Maestri", "della Sorgente, n°6", "040636801", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_osteriaaimaestri);
+                Local sei_trieste = new Local("O. Tempo Perso", "Boccaccio, n°20", "3285319928", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_osteriaaltempoperso);
+                Local sette_trieste = new Local("Menarosti", "del Toro, n°12", "040661077", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_ristorantemenarosti);
+                Local otto_trieste = new Local("Spazzacamino", "d.Settefontane, n°68", "040945160", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_anticospazzacamino);
+                Local nove_trieste = new Local("JOIA", "diaz, n°1", "0403478940", "Pesce, Mediterranea", "drawable://" + R.drawable.trieste_tablocali_joia);
 
                 ArrayList<Local> localList_trieste = new ArrayList<>();
                 localList_trieste.add(zero_trieste);
@@ -197,16 +210,16 @@ public class tab_locale extends Fragment {
                 listView.setAdapter(adapter_trieste);
                 break;
             case "Norimberga":
-                Local zero_norimberga = new Local("Troedelstuben", "Troedelmarkt 30", "91136772767", "Vegetariana", "drawable://" + R.drawable.norimberga_tablocali_troedelstuben, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local uno_norimberga = new Local("Albrecht D. S.", "Albrecht-Duerer-Str. 6", "911227209", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_albrechtdurerstube, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local due_norimberga = new Local("Bohm's H.", "Theatergasse 19", "911224465", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_bohmsherrenkeller, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local tre_norimberga = new Local("Hutt'n E.& T.", "Bergstr. 20", "9112019881", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_huttnessentrinken, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local quattro_norimberga = new Local("Nurnberger A.", "Burgstr. 19", "911507169", "Bar, Europea", "drawable://" + R.drawable.norimberga_tablocali_nurnbergeralm, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local cinque_norimberga = new Local("Z. Albrecht D. H.", "O. Schmiedgasse 58", "91121144940", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_zumalbrechtduererhaus, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local sei_norimberga = new Local("Schaufelewart", "Schweiggerstr. 19", "9114597325", "Gastronomia", "drawable://" + R.drawable.norimberga_tablocali_schaufelewartschaft, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local sette_norimberga = new Local("Hausbrauerei A.", "Bergstr. 19", "9112449859", "Bar, Pub", "drawable://" + R.drawable.norimberga_tablocali_hausbrauereialtstadthof, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local otto_norimberga = new Local("kopernikus", "H. Insel Schuett 34", "9112427740", "Tedesca, Polacca", "drawable://" + R.drawable.norimberga_tablocali_restaurationkopernikus, "drawable://" + R.drawable.quattroemezzo_stelle);
-                Local nove_norimberga = new Local("Gaststatte K. B.", "Obere Woerthstr. 2", "9112373171", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_gaststattekarlsbruckla, "drawable://" + R.drawable.quattro_stelle);
+                Local zero_norimberga = new Local("Troedelstuben", "Troedelmarkt 30", "91136772767", "Vegetariana", "drawable://" + R.drawable.norimberga_tablocali_troedelstuben);
+                Local uno_norimberga = new Local("Albrecht D. S.", "Albrecht-Duerer-Str. 6", "911227209", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_albrechtdurerstube);
+                Local due_norimberga = new Local("Bohm's H.", "Theatergasse 19", "911224465", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_bohmsherrenkeller);
+                Local tre_norimberga = new Local("Hutt'n E.& T.", "Bergstr. 20", "9112019881", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_huttnessentrinken);
+                Local quattro_norimberga = new Local("Nurnberger A.", "Burgstr. 19", "911507169", "Bar, Europea", "drawable://" + R.drawable.norimberga_tablocali_nurnbergeralm);
+                Local cinque_norimberga = new Local("Z. Albrecht D. H.", "O. Schmiedgasse 58", "91121144940", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_zumalbrechtduererhaus);
+                Local sei_norimberga = new Local("Schaufelewart", "Schweiggerstr. 19", "9114597325", "Gastronomia", "drawable://" + R.drawable.norimberga_tablocali_schaufelewartschaft);
+                Local sette_norimberga = new Local("Hausbrauerei A.", "Bergstr. 19", "9112449859", "Bar, Pub", "drawable://" + R.drawable.norimberga_tablocali_hausbrauereialtstadthof);
+                Local otto_norimberga = new Local("kopernikus", "H. Insel Schuett 34", "9112427740", "Tedesca, Polacca", "drawable://" + R.drawable.norimberga_tablocali_restaurationkopernikus);
+                Local nove_norimberga = new Local("Gaststatte K. B.", "Obere Woerthstr. 2", "9112373171", "Centro-Europea", "drawable://" + R.drawable.norimberga_tablocali_gaststattekarlsbruckla);
 
                 ArrayList<Local> localList_norimberga = new ArrayList<>();
                 localList_norimberga.add(zero_norimberga);

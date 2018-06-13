@@ -6,15 +6,13 @@ public class Local {
     private String number;
     private String description;
     private String img_local;
-    private String img_star;
 
-    public Local(String name, String address, String number, String description, String img_local, String img_star){
+    public Local(String name, String address, String number, String description, String img_local){
         this.name = name;
         this.address = address;
         this.number = number;
         this.description = description;
         this.img_local = img_local;
-        this.img_star = img_star;
     }
 
     public void setName(String name) {
@@ -37,10 +35,6 @@ public class Local {
         this.img_local = img_local;
     }
 
-    public void setImg_star(String img_star) {
-        this.img_star = img_star;
-    }
-
     public String getName() {
         return name;
     }
@@ -59,9 +53,5 @@ public class Local {
 
     public String getImg_local() {
         return img_local;
-    }
-
-    public String getImg_star() {
-        return img_star;
     }
 }

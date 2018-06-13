@@ -33,7 +33,6 @@ public class LocalListAdapter extends ArrayAdapter<Local> {
         TextView number;
         TextView description;
         ImageView img_local;
-        ImageView img_star;
     }
 
     public LocalListAdapter(Context context, int resource, ArrayList<Local> objects) {
@@ -53,7 +52,6 @@ public class LocalListAdapter extends ArrayAdapter<Local> {
         String number = getItem(position).getNumber();
         String description = getItem(position).getDescription();
         String img_local = getItem(position).getImg_local();
-        String img_star = getItem(position).getImg_star();
 
         final View result;
 
@@ -68,7 +66,6 @@ public class LocalListAdapter extends ArrayAdapter<Local> {
             holder.number = (TextView) convertView.findViewById(R.id.number);
             holder.description = (TextView) convertView.findViewById(R.id.description);
             holder.img_local = (ImageView) convertView.findViewById(R.id.image2);
-            holder.img_star = (ImageView) convertView.findViewById(R.id.image1);
 
             result = convertView;
 
@@ -84,7 +81,6 @@ public class LocalListAdapter extends ArrayAdapter<Local> {
         holder.description.setText(description);
 
         ImageLoader imageLoader = ImageLoader.getInstance();
-        ImageLoader imageLoader2 = ImageLoader.getInstance();
         int defaultImage = mContext.getResources().getIdentifier("@drawable/image_failed", null, mContext.getPackageName());
 
         DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
@@ -94,7 +90,6 @@ public class LocalListAdapter extends ArrayAdapter<Local> {
                 .showImageOnLoading(defaultImage).build();
 
         imageLoader.displayImage(img_local, holder.img_local, options);
-        imageLoader2.displayImage(img_star, holder.img_star, options);
 
         return convertView;
     }

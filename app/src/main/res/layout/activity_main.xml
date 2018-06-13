@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
@@ -23,12 +23,13 @@
             <TextView
                 android:id="@+id/text"
                 android:textColor="#000000"
+                android:textStyle="bold"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Seleziona città:"
-                android:textSize="20dp"
+                android:textSize="16dp"
                 />
 
             <Spinner
@@ -41,29 +42,31 @@
                 >
 
             </Spinner>
+
         </LinearLayout>
 
-        <Button
-            android:layout_marginTop="50dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/button"
-            android:textColor="#000000"
-            android:text="Invio"
-            />
+            <Button
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/button"
+                android:textColor="#000000"
+                android:text="Invio"
+                />
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="50dp"
-            android:layout_width="match_parent"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
+            <ImageView
+                android:id="@+id/image"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_height="250dp"
+                android:layout_marginBottom="50dp"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
 
-            />
+                />
+
     </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+</ScrollView>
