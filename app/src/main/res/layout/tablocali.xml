@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:textSize="15sp"
-        android:text="Fonti prese da: TripAdvisor"
+        android:text="Informazioni fornite da: TripAdvisor"
         android:paddingLeft="8dp"
         >
 
