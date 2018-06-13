@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setOnItemSelectedListener(this);
         setS(spinner.getSelectedItem().toString());
 
-
-
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener()
         {

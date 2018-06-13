@@ -53,8 +53,6 @@ public class tab_locale extends Fragment {
 
         Log.d(TAG, "onCreate: Started.");
 
-
-
         ListView listView = (ListView) rootView.findViewById(R.id.list);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -99,7 +97,7 @@ public class tab_locale extends Fragment {
             }
         });
 
-        switch (s){
+        switch(s){
             case "Carpi":
                 Local zero_carpi = new Local("Il Barolino", "P.Giovanni XXIII, n°110", "059654327", "Mediterranea", "drawable://" + R.drawable.carpi_tablocali_barolino);
                 Local uno_carpi = new Local("Pooja", "Karl Marx, n°3", "059645345", "Indiana, Vegana", "drawable://" + R.drawable.carpi_tablocali_pooja);

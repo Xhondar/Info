@@ -28,15 +28,49 @@ import java.util.TimerTask;
 public class tab_info extends Fragment {
     tab t = new tab();
     String s = "";
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.tabinfo, container, false);
+
+        CardView cardView_info = (CardView) view.findViewById(R.id.info);
+        cardView_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), Info.class);
+                startActivity(i);
+            }
+        });
+
+        CardView cardView_storia = (CardView) view.findViewById(R.id.storia);
+        cardView_storia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), Storia.class);
+                startActivity(i);
+            }
+        });
+
+        CardView cardView_monumenti = (CardView) view.findViewById(R.id.monumenti);
+        cardView_monumenti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), Monumenti.class);
+                startActivity(i);
+            }
+        });
+
+        CardView cardView_piatti = (CardView) view.findViewById(R.id.piatti);
+        cardView_piatti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), Piatti.class);
+                startActivity(i);
+            }
+        });
 
         return view;
 
     }
-
-
 }

@@ -35,5 +35,20 @@
             android:theme="@style/AppTheme"
             >
         </activity>
+        <activity android:name=".Piatti"
+            android:label="Piatti tipici">
+
+        </activity>
+        <activity android:name=".Info"
+            android:label="Informazioni generali">
+
+        </activity>
+        <activity android:name=".Monumenti"
+            android:label="Monumenti caratteristici">
+
+        </activity>
+        <activity android:name=".Storia"
+            android:label="Eventi storici principali">
+        </activity>
     </application>
 </manifest>
