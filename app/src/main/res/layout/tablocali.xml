@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="esame.progetto.xhondar.github.com.info">
+    android:background="@drawable/background_tablocali"
+    tools:context="esame.progetto.xhondar.github.com.info.tab">
 
     <TextView
         android:layout_width="match_parent"

@@ -6,17 +6,20 @@
     android:fillViewport="true"
     >
     <LinearLayout
+        android:background="@drawable/background_tabinfo"
         android:id="@+id/linear"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical">
         <LinearLayout
-            android:paddingTop="8dp"
+            android:paddingTop="16dp"
             android:layout_height="0dp"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal">
             <android.support.v7.widget.CardView
+                android:backgroundTint="#0000FF"
+                android:background="#FFD000"
                 android:id="@+id/info"
                 android:clickable="true"
                 android:layout_width="0dp"
@@ -49,13 +52,14 @@
                 </LinearLayout>
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView
+                android:backgroundTint="#FF0000"
                 android:id="@+id/storia"
                 android:clickable="true"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="16dp"
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp">
@@ -82,12 +86,13 @@
             </android.support.v7.widget.CardView>
         </LinearLayout>
         <LinearLayout
-            android:paddingBottom="8dp"
+            android:paddingBottom="16dp"
             android:layout_height="0dp"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal">
             <android.support.v7.widget.CardView
+                android:backgroundTint="#FFD000"
                 android:id="@+id/monumenti"
                 android:clickable="true"
                 android:layout_width="0dp"
@@ -120,13 +125,14 @@
                 </LinearLayout>
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView
+                android:backgroundTint="#008000"
                 android:id="@+id/piatti"
                 android:clickable="true"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="16dp"
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp">

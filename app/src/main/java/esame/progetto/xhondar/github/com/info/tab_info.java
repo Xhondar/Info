@@ -34,11 +34,15 @@ public class tab_info extends Fragment {
 
         View view = inflater.inflate(R.layout.tabinfo, container, false);
 
+        t = (tab) getActivity();
+        s = t.getS();
+
         CardView cardView_info = (CardView) view.findViewById(R.id.info);
         cardView_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), Info.class);
+                i.putExtra("message", s);
                 startActivity(i);
             }
         });
@@ -48,6 +52,7 @@ public class tab_info extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), Storia.class);
+                i.putExtra("message", s);
                 startActivity(i);
             }
         });
@@ -57,6 +62,7 @@ public class tab_info extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), Monumenti.class);
+                i.putExtra("message", s);
                 startActivity(i);
             }
         });
@@ -66,6 +72,7 @@ public class tab_info extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), Piatti.class);
+                i.putExtra("message", s);
                 startActivity(i);
             }
         });

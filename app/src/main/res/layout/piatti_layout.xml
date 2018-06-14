@@ -7,4 +7,5 @@
     android:fitsSystemWindows="true"
     tools:context="esame.progetto.xhondar.github.com.info.Piatti">
 
+
 </ScrollView>

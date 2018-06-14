@@ -61,11 +61,11 @@ public class LocalListAdapter extends ArrayAdapter<Local> {
             LayoutInflater inflater = LayoutInflater.from(mContext);
             convertView = inflater.inflate(mResource, parent, false);
             holder = new ViewHolder();
-            holder.name = (TextView) convertView.findViewById(R.id.name);
-            holder.address = (TextView) convertView.findViewById(R.id.address);
-            holder.number = (TextView) convertView.findViewById(R.id.number);
-            holder.description = (TextView) convertView.findViewById(R.id.description);
-            holder.img_local = (ImageView) convertView.findViewById(R.id.image2);
+            holder.name = convertView.findViewById(R.id.name);
+            holder.address = convertView.findViewById(R.id.address);
+            holder.number = convertView.findViewById(R.id.number);
+            holder.description = convertView.findViewById(R.id.description);
+            holder.img_local = convertView.findViewById(R.id.image2);
 
             result = convertView;
 

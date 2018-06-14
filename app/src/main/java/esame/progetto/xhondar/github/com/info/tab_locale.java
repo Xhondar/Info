@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -14,6 +15,7 @@ import android.media.Rating;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -97,6 +99,8 @@ public class tab_locale extends Fragment {
             }
         });
 
+        ImageView imageView = (ImageView) rootView.findViewById(R.id.image2);
+
         switch(s){
             case "Carpi":
                 Local zero_carpi = new Local("Il Barolino", "P.Giovanni XXIII, n°110", "059654327", "Mediterranea", "drawable://" + R.drawable.carpi_tablocali_barolino);
@@ -110,17 +114,18 @@ public class tab_locale extends Fragment {
                 Local otto_carpi = new Local("Narciso", "S.S. 468 Motta", "3938794963", "Pizza, Pesce", "drawable://" + R.drawable.carpi_tablocal_narciso);
                 Local nove_carpi = new Local("Il Carducci", "Carducci, n°16", "0596229518", "Mediterranea", "drawable://" + R.drawable.carpi_tablocal_carducci);
 
-                ArrayList<Local> localList_carpi = new ArrayList<>();
-                localList_carpi.add(zero_carpi);
-                localList_carpi.add(uno_carpi);
-                localList_carpi.add(due_carpi);
-                localList_carpi.add(tre_carpi);
-                localList_carpi.add(quattro_carpi);
-                localList_carpi.add(cinque_carpi);
-                localList_carpi.add(sei_carpi);
-                localList_carpi.add(sette_carpi);
-                localList_carpi.add(otto_carpi);
-                localList_carpi.add(nove_carpi);
+
+                ArrayList<Local> localList_carpi = new ArrayList<>(10);
+                localList_carpi.add(0, zero_carpi);
+                localList_carpi.add(1, uno_carpi);
+                localList_carpi.add(2, due_carpi);
+                localList_carpi.add(3, tre_carpi);
+                localList_carpi.add(4, quattro_carpi);
+                localList_carpi.add(5, cinque_carpi);
+                localList_carpi.add(6, sei_carpi);
+                localList_carpi.add(7, sette_carpi);
+                localList_carpi.add(8, otto_carpi);
+                localList_carpi.add(9, nove_carpi);
 
                 LocalListAdapter adapter_carpi = new LocalListAdapter(getContext(), R.layout.list_item, localList_carpi);
                 listView.setAdapter(adapter_carpi);
