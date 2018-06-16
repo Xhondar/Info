@@ -6,7 +6,7 @@
     android:fillViewport="true"
     >
     <LinearLayout
-        android:background="@drawable/background_tabinfo"
+        android:background="@drawable/bck"
         android:id="@+id/linear"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
