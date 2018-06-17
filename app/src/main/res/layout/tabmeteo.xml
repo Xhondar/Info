@@ -69,9 +69,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        >
+        android:layout_height="276dp"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/thermometer"
@@ -83,9 +82,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_gravity="bottom"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tempMax"
@@ -101,8 +99,8 @@
                 android:id="@+id/tempMin"
                 android:layout_width="79dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
                 android:layout_below="@id/tempMax"
+                android:layout_marginBottom="12dp"
                 android:paddingTop="20dp"
                 android:text="min:"
                 android:textColor="#000000"
@@ -115,11 +113,11 @@
             android:id="@+id/timeDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="12dp"
             android:gravity="right"
             android:maxLines="3"
             android:text="Data:"
-            android:layout_marginBottom="12dp"
-            android:layout_gravity="bottom"
             android:textColor="#000000"
             android:textSize="25sp"
             android:textStyle="bold" />

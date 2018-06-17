@@ -38,14 +38,6 @@ public class tab_meteo extends Fragment {
 
     public void find_weather(String citta){
         String url = "http://api.openweathermap.org/data/2.5/weather?q=";
-        if(citta == "Lubiana")
-        {
-            citta = "Ljubljana";
-        }
-        if(citta == "Norimberga")
-        {
-            citta = "Nuremberg";
-        }
         final String city = citta ;
         String apiKey = "&appid=41afbec1ba89050882ba1ef131e6aa72";
         url = url + city + apiKey + "&lang=it&units=metric";
@@ -235,6 +227,14 @@ public class tab_meteo extends Fragment {
         View rootView = inflater.inflate(R.layout.tabmeteo, container, false);
         t = (tab) getActivity();
         s = t.getS();
+        if(s == "Lubiana")
+        {
+            s = "Ljubljana";
+        }
+        if(s == "Norimberga")
+        {
+            s = "Nuremberg";
+        }
         find_weather(s);
         return rootView;
 
