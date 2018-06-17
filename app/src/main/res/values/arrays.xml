@@ -4,7 +4,7 @@
         <item code="carpi"> Carpi </item>
         <item code="berlino"> Berlino </item>
         <item code="trieste"> Trieste </item>
-        <item code="nuremberg"> Norimberga </item>
-        <item code="ljubljana"> Lubiana </item>
+        <item code="nuremberg"> Nuremberg </item>
+        <item code="ljubljana"> Lubljana </item>
     </string-array>
 </resources>
