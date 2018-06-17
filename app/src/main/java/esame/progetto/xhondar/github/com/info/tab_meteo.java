@@ -192,17 +192,17 @@ public class tab_meteo extends Fragment {
 
                     if(Integer.parseInt(code) == 800 ) // atmosfera
                     {
-                        image.setImageResource(R.drawable.sun1);
+                        image.setImageResource(R.drawable.sun);
 
                     }
 
                     if(Integer.parseInt(code) >= 801 || Integer.parseInt(code) <= 804) // atmosfera
                     {
-                        image.setImageResource(R.drawable.clouds);
+                        image.setImageResource(R.drawable.sun1);
 
                     }
 
-                    temp.setText(temperature + "°" + "C");
+                    temp.setText(temperature + "°");
                     temperaturaMin.setText("Min " + tMin + "°");
                     temperaturaMax.setText("Max " + tMax + "°");
                     timeData.setText(formatted_date);
