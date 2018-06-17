@@ -7,9 +7,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="esame.progetto.xhondar.github.com.info$PlaceholderFragment"
+    android:background="@drawable/sfondo_meteo"
     >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -18,33 +19,103 @@
         tools:layout_editor_absoluteY="166dp">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
             android:id="@+id/weatherPicture"
-            />
+            android:layout_width="228dp"
+            android:layout_height="226dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:foregroundGravity="center"
+            android:src="@drawable/sun" />
+
+        <ImageView
+            android:id="@+id/thermometer"
+            android:layout_width="67dp"
+            android:layout_height="97dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:foregroundGravity="center"
+            android:src="@drawable/thermometer" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="157dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/weatherPicture"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:gravity="left"
+            android:paddingTop="20dp"
+            android:text="max:"
+            android:textColor="#000000"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
 
         <TextView
             android:id="@+id/tempMeteo"
-            android:layout_width="match_parent"
+            android:layout_width="154dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/cityName"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:text="Te"
+            android:textColor="#000000"
+            android:textSize="60sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tempMax"
+            android:layout_width="79dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/cityName"
+            android:layout_alignTop="@+id/thermometer"
+            android:layout_marginEnd="-36dp"
             android:gravity="left"
             android:paddingTop="20dp"
-            android:text="Temperatura:"
+            android:text="max:"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tempMin"
+            android:layout_width="79dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/tempMax"
+            android:layout_marginBottom="12dp"
+            android:gravity="left"
+            android:paddingTop="20dp"
+            android:text="min:"
             android:textColor="#000000"
             android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/timeDate"
-            android:layout_width="match_parent"
+            android:layout_width="385dp"
             android:layout_height="wrap_content"
-            android:gravity="left"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="right"
             android:maxLines="3"
             android:text="Data:"
             android:textColor="#000000"
-            android:textSize="15sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/cityName"
+            android:layout_width="156dp"
+            android:layout_height="57dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="left"
+            android:maxLines="3"
+            android:text="citta"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 </LinearLayout>

@@ -42,7 +42,11 @@ public class tab_meteo extends Fragment {
         {
             citta = "Ljubljana";
         }
-        String city = citta ;
+        if(citta == "Norimberga")
+        {
+            citta = "Nuremberg";
+        }
+        final String city = citta ;
         String apiKey = "&appid=41afbec1ba89050882ba1ef131e6aa72";
         url = url + city + apiKey + "&lang=it&units=metric";
 
@@ -127,9 +131,13 @@ public class tab_meteo extends Fragment {
                     804	overcast clouds
                      */
 
-                    TextView temp, timeData;
+                    TextView temp, timeData,temperaturaMin, temperaturaMax, nomeCitta, descrizione;
                     temp = (TextView) getActivity().findViewById(R.id.tempMeteo);
+                    temperaturaMin = (TextView) getActivity().findViewById(R.id.tempMin);
+                    temperaturaMax = (TextView) getActivity().findViewById(R.id.tempMax);
                     timeData = (TextView) getActivity().findViewById(R.id.timeDate);
+                    nomeCitta = (TextView) getActivity().findViewById(R.id.cityName);
+                    descrizione = (TextView) getActivity().findViewById(R.id.description);
 
                     ImageView image = (ImageView) getActivity().findViewById(R.id.weatherPicture);
 
@@ -139,24 +147,67 @@ public class tab_meteo extends Fragment {
                     JSONArray array = response.getJSONArray("weather");
                     JSONObject obj2 = array.getJSONObject(0);
 
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd MMMM");
+                    String formatted_date = sdf.format(calendar.getTime());
+
+                    String tMin = String.valueOf(obj.getString("temp_min"));
+                    String tMax = String.valueOf(obj.getString("temp_max"));
                     String code = obj2.getString("id");
-                    String temperature = String.valueOf(obj.getDouble("temp"));
-                    String description = obj2.getString("description");
+                    String temperature = String.valueOf(obj.getInt("temp"));
+                    String desc = obj2.getString("description");
 
-                    if(Integer.parseInt(code) >= 200 || Integer.parseInt(code) <= 232)
+                    if(Integer.parseInt(code) >= 200 || Integer.parseInt(code) <= 232) // fulmini
                     {
-
+                        image.setImageResource(R.drawable.thunderstorm);
                         /*LinearLayout l = (LinearLayout) getActivity().findViewById(R.id.constraintLayout);
                         l.setBackgroundResource(R.drawable.berlino);*/
                     }
-                    //image.setImageResource(id);
 
-                    temp.setText(temperature);
-                    Calendar calendar = Calendar.getInstance();
-                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MM");
-                    String formatted_date = sdf.format(calendar.getTime());
+                    if(Integer.parseInt(code) >= 300 || Integer.parseInt(code) <= 321) // pioggerella
+                    {
+                        image.setImageResource(R.drawable.rain);
 
+                    }
+
+                    if(Integer.parseInt(code) >= 500 || Integer.parseInt(code) <= 531) // pioggia
+                    {
+                        image.setImageResource(R.drawable.rain);
+                        /*LinearLayout l = (LinearLayout) getActivity().findViewById(R.id.constraintLayout);
+                        l.setBackgroundResource(R.drawable.berlino);*/
+                    }
+
+                    if(Integer.parseInt(code) >= 600 || Integer.parseInt(code) <= 622) // neve
+                    {
+                        image.setImageResource(R.drawable.snow);
+
+                    }
+
+                    if(Integer.parseInt(code) >= 701 || Integer.parseInt(code) <= 781) // atmosfera
+                    {
+                        image.setImageResource(R.drawable.mist);
+
+                    }
+
+
+                    if(Integer.parseInt(code) == 800 ) // atmosfera
+                    {
+                        image.setImageResource(R.drawable.sun1);
+
+                    }
+
+                    if(Integer.parseInt(code) >= 801 || Integer.parseInt(code) <= 804) // atmosfera
+                    {
+                        image.setImageResource(R.drawable.clouds);
+
+                    }
+
+                    temp.setText(temperature + "°" + "C");
+                    temperaturaMin.setText("Min " + tMin + "°");
+                    temperaturaMax.setText("Max " + tMax + "°");
                     timeData.setText(formatted_date);
+                    nomeCitta.setText(city);
+                    descrizione.setText(desc);
 
 
 
