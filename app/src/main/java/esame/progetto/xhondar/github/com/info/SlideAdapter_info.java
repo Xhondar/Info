@@ -46,7 +46,7 @@ public class SlideAdapter_info extends PagerAdapter {
 
     public String txt1_trieste = "Italia";
     public String txt2_trieste = "Triestini";
-    public String txt3_trieste = "Italiano e Sloveno";
+    public String txt3_trieste = "Italiano/Sloveno";
     public String txt4_trieste = "040";
     public String txt5_trieste = "85,11 km²";
     public String txt6_trieste = "204.347";
@@ -71,12 +71,12 @@ public class SlideAdapter_info extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return (view==(LinearLayout)object);
+        return (view==(ScrollView)object);
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((LinearLayout)object);
+        container.removeView((ScrollView)object);
     }
 
     @NonNull
@@ -87,6 +87,8 @@ public class SlideAdapter_info extends PagerAdapter {
 
         LinearLayout layoutslide = view.findViewById(R.id.slidelinear_info);
         //layoutslide.setBackgroundColor(Color.rgb(55, 55, 55));
+
+
 
         Info i = new Info();
         i = (Info) view.getContext();
@@ -106,7 +108,7 @@ public class SlideAdapter_info extends PagerAdapter {
 
         switch (s){
             case "Carpi":
-                img.setImageResource(R.drawable.carpi);
+                img.setImageResource(R.drawable.stemma_carpi);
                 t1.setText(txt1_carpi);
                 t2.setText(txt2_carpi);
                 t3.setText(txt3_carpi);
@@ -116,7 +118,7 @@ public class SlideAdapter_info extends PagerAdapter {
                 t7.setText(txt7_carpi);
                 break;
             case "Berlino":
-                img.setImageResource(R.drawable.berlino);
+                img.setImageResource(R.drawable.stemma_berlino);
                 t1.setText(txt1_berlino);
                 t2.setText(txt2_berlino);
                 t3.setText(txt3_berlino);
@@ -126,7 +128,7 @@ public class SlideAdapter_info extends PagerAdapter {
                 t7.setText(txt7_berlino);
                 break;
             case "Lubiana":
-                img.setImageResource(R.drawable.lubiana);
+                img.setImageResource(R.drawable.stemma_lubiana);
                 t1.setText(txt1_lubiana);
                 t2.setText(txt2_lubiana);
                 t3.setText(txt3_lubiana);
@@ -136,7 +138,7 @@ public class SlideAdapter_info extends PagerAdapter {
                 t7.setText(txt7_lubiana);
                 break;
             case "Trieste":
-                img.setImageResource(R.drawable.trieste);
+                img.setImageResource(R.drawable.stemma_trieste);
                 t1.setText(txt1_trieste);
                 t2.setText(txt2_trieste);
                 t3.setText(txt3_trieste);
@@ -146,7 +148,7 @@ public class SlideAdapter_info extends PagerAdapter {
                 t7.setText(txt7_trieste);
                 break;
             case "Norimberga":
-                img.setImageResource(R.drawable.norimberga);
+                img.setImageResource(R.drawable.stemma_norimberga);
                 t1.setText(txt1_norimberga);
                 t2.setText(txt2_norimberga);
                 t3.setText(txt3_norimberga);

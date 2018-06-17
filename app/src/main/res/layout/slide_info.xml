@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/slidelinear_info"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,16 +35,20 @@
 
 
     <LinearLayout
-        android:paddingLeft="10dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/linear1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <TextView
             android:paddingTop="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Stato di appartenenza: "
+            android:text="Stato: "
             android:textSize="20sp"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -51,7 +57,8 @@
 
         <TextView
             android:id="@+id/txt1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/black"
@@ -60,14 +67,16 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:paddingLeft="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <TextView
             android:paddingTop="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Nome abitanti: "
             android:textSize="20sp"
@@ -78,7 +87,8 @@
 
         <TextView
             android:id="@+id/txt2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/black"
@@ -87,14 +97,16 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:paddingLeft="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <TextView
             android:paddingTop="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Lingua parlata: "
             android:textSize="20sp"
@@ -105,7 +117,8 @@
 
         <TextView
             android:id="@+id/txt3"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/black"
@@ -114,14 +127,16 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:paddingLeft="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <TextView
             android:paddingTop="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Prefisso: "
             android:textColor="@color/black"
@@ -132,7 +147,8 @@
 
         <TextView
             android:id="@+id/txt4"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/black"
@@ -141,14 +157,16 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:paddingLeft="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <TextView
             android:paddingTop="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Superficie: "
             android:textColor="@color/black"
@@ -159,7 +177,8 @@
 
         <TextView
             android:id="@+id/txt5"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/black"
@@ -168,16 +187,18 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:paddingLeft="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <TextView
             android:paddingTop="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Numero abitanti: "
+            android:text="N° abitanti: "
             android:textSize="20sp"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -186,7 +207,8 @@
 
         <TextView
             android:id="@+id/txt6"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/black"
@@ -195,14 +217,17 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:paddingLeft="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <TextView
             android:paddingTop="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Densità: "
             android:textSize="20sp"
@@ -213,7 +238,8 @@
 
         <TextView
             android:id="@+id/txt7"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/black"
@@ -222,3 +248,4 @@
             />
     </LinearLayout>
 </LinearLayout>
+</ScrollView>
