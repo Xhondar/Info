@@ -34,11 +34,18 @@ import org.w3c.dom.Text;
 
 public class tab_meteo extends Fragment {
     tab t = new tab();
-    String s = "";
+    String ss = "";
+
+    public void setSS(String sss){
+        this.ss = sss;
+    }
+
+    public String getSS(){return ss;}
 
     public void find_weather(String citta){
 
-        final String city = citta ;
+
+        final String city = getSS() ;
         String url = "http://api.openweathermap.org/data/2.5/weather?q=";
         String apiKey = "&appid=41afbec1ba89050882ba1ef131e6aa72";
         url = url + city + apiKey + "&lang=it&units=metric";
@@ -199,7 +206,7 @@ public class tab_meteo extends Fragment {
                     temperaturaMin.setText("Min " + tMin + "°");
                     temperaturaMax.setText("Max " + tMax + "°");
                     timeData.setText(formatted_date);
-                    nomeCitta.setText(city);
+                    nomeCitta.setText(t.getS());
                     descrizione.setText(desc);
 
 
@@ -227,16 +234,14 @@ public class tab_meteo extends Fragment {
     {
         View rootView = inflater.inflate(R.layout.tabmeteo, container, false);
         t = (tab) getActivity();
-        String s = String.valueOf(t.getS());
-        if (s == "Lubiana"){
-            t.setS("Ljubljana");
-        }else if (s == "Norimberga"){
-            t.setS("Nuremberg");
+        String s =t.getS();
+        switch (s){
+            case "Lubiana": setSS("Ljubljana"); break;
+            case "Norimberga": setSS("Nuremberg"); break;
+            default: setSS(s); break;
         }
-        s = String.valueOf(t.getS());
 
-
-        find_weather(s);
+        find_weather(getSS());
 
         return rootView;
 
