@@ -2,11 +2,8 @@ package esame.progetto.xhondar.github.com.info;
 
 
 import android.app.DownloadManager;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Environment;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 
@@ -15,16 +12,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class tab extends AppCompatActivity {
 
@@ -79,13 +69,8 @@ public class tab extends AppCompatActivity {
         Toast.makeText(this, "Download...", Toast.LENGTH_SHORT).show();
     }
 
-    long queueid;
-    DownloadManager dm;
     public void download(){
-        //"https://drive.google.com/open?id=11CbsmykT4GDLd3kdCsJi3pcfBlnR4kQ6"
-        dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse("https://drive.google.com/open?id=11CbsmykT4GDLd3kdCsJi3pcfBlnR4kQ6"));
-        queueid = dm.enqueue(request);
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://drive.google.com/open?id=11CbsmykT4GDLd3kdCsJi3pcfBlnR4kQ6")));
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
