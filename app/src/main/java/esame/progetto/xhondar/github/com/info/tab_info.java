@@ -42,7 +42,7 @@ public class tab_info extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), Info.class);
-                i.putExtra("message", s);
+                i.putExtra("message1", s);
                 startActivity(i);
             }
         });
@@ -51,9 +51,9 @@ public class tab_info extends Fragment {
         cardView_storia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), Storia.class);
-                i.putExtra("message", s);
-                startActivity(i);
+                Intent ii = new Intent(getContext(), Storia.class);
+                ii.putExtra("message2", s);
+                startActivity(ii);
             }
         });
 
@@ -61,9 +61,9 @@ public class tab_info extends Fragment {
         cardView_monumenti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), Monumenti.class);
-                i.putExtra("message", s);
-                startActivity(i);
+                Intent iii = new Intent(getContext(), Monumenti.class);
+                iii.putExtra("message3", s);
+                startActivity(iii);
             }
         });
 
@@ -71,9 +71,9 @@ public class tab_info extends Fragment {
         cardView_piatti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), Piatti.class);
-                i.putExtra("message", s);
-                startActivity(i);
+                Intent iiii = new Intent(getContext(), Piatti.class);
+                iiii.putExtra("message4", s);
+                startActivity(iiii);
             }
         });
 

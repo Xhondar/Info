@@ -2,8 +2,6 @@ package esame.progetto.xhondar.github.com.info;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
@@ -14,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SlideAdapter_info extends PagerAdapter {
     Context context;
@@ -86,13 +83,10 @@ public class SlideAdapter_info extends PagerAdapter {
         View view = inflater.inflate(R.layout.slide_info, container, false);
 
         LinearLayout layoutslide = view.findViewById(R.id.slidelinear_info);
-        //layoutslide.setBackgroundColor(Color.rgb(55, 55, 55));
-
-
 
         Info i = new Info();
         i = (Info) view.getContext();
-        String s = i.getS();
+        String s = i.getIntent().getStringExtra("message1");
 
         ImageView img = view.findViewById(R.id.slideimg);
         TextView t = view.findViewById(R.id.txttitle);

@@ -8,9 +8,4 @@
         android:title="Info App"
         app:showAsAction="never"
         />
-    <item
-        android:orderInCategory="100"
-        android:title="Info Sviluppatori"
-        app:showAsAction="never">
-    </item>
 </menu>
