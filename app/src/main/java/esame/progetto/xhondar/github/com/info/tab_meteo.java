@@ -124,7 +124,7 @@ public class tab_meteo extends Fragment {
                      */
 
                     /* CLOUDS / nuvole
-                    800 clear sky
+                    800 clear sky // solo sole
                     801	few clouds
                     802	scattered clouds
                     803	broken clouds
@@ -157,33 +157,33 @@ public class tab_meteo extends Fragment {
                     String temperature = String.valueOf(obj.getInt("temp"));
                     String desc = obj2.getString("description");
 
-                    if(Integer.parseInt(code) >= 200 || Integer.parseInt(code) <= 232) // fulmini
+                    if(Integer.parseInt(code) >= 200 && Integer.parseInt(code) <= 232) // fulmini
                     {
                         image.setImageResource(R.drawable.thunderstorm);
                         /*LinearLayout l = (LinearLayout) getActivity().findViewById(R.id.constraintLayout);
                         l.setBackgroundResource(R.drawable.berlino);*/
                     }
 
-                    if(Integer.parseInt(code) >= 300 || Integer.parseInt(code) <= 321) // pioggerella
+                    if(Integer.parseInt(code) >= 300 && Integer.parseInt(code) <= 321) // pioggerella
                     {
                         image.setImageResource(R.drawable.rain);
 
                     }
 
-                    if(Integer.parseInt(code) >= 500 || Integer.parseInt(code) <= 531) // pioggia
+                    if(Integer.parseInt(code) >= 500 && Integer.parseInt(code) <= 531) // pioggia
                     {
                         image.setImageResource(R.drawable.rain);
                         /*LinearLayout l = (LinearLayout) getActivity().findViewById(R.id.constraintLayout);
                         l.setBackgroundResource(R.drawable.berlino);*/
                     }
 
-                    if(Integer.parseInt(code) >= 600 || Integer.parseInt(code) <= 622) // neve
+                    if(Integer.parseInt(code) >= 600 && Integer.parseInt(code) <= 622) // neve
                     {
                         image.setImageResource(R.drawable.snow);
 
                     }
 
-                    if(Integer.parseInt(code) >= 701 || Integer.parseInt(code) <= 781) // atmosfera
+                    if(Integer.parseInt(code) >= 701 && Integer.parseInt(code) <= 781) // atmosfera
                     {
                         image.setImageResource(R.drawable.mist);
 
@@ -196,7 +196,7 @@ public class tab_meteo extends Fragment {
 
                     }
 
-                    if(Integer.parseInt(code) >= 801 || Integer.parseInt(code) <= 804) // atmosfera
+                    if(Integer.parseInt(code) >= 801 && Integer.parseInt(code) <= 804) // atmosfera
                     {
                         image.setImageResource(R.drawable.sun1);
 
