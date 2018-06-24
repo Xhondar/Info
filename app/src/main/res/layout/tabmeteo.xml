@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
+    android:id="@+id/scrollLayout"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     tools:context="esame.progetto.xhondar.github.com.info.tab"
@@ -12,7 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_three"
+    android:id="@+id/backgroundImage"
     >
 
     <LinearLayout
@@ -25,8 +25,7 @@
             android:id="@+id/weatherPicture"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="226dp"
-            android:src="@drawable/sun" />
+            android:layout_height="226dp" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -41,7 +40,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="57dp"
                 android:maxLines="3"
-                android:text="Norimberga"
                 android:paddingRight="16dp"
                 android:layout_gravity="end"
                 android:textColor="#000000"
@@ -51,11 +49,10 @@
             <TextView
                 android:id="@+id/tempMeteo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="20dp"
-                android:text="Te"
+                android:layout_height="88dp"
                 android:layout_gravity="end"
                 android:paddingRight="16dp"
+                android:paddingTop="20dp"
                 android:textColor="#000000"
                 android:textSize="60sp"
                 android:textStyle="bold" />
@@ -67,7 +64,6 @@
                 android:layout_gravity="end"
                 android:paddingRight="16dp"
                 android:paddingTop="20dp"
-                android:text="max:"
                 android:textColor="#000000"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -78,7 +74,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="251dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -103,7 +99,6 @@
                 android:shadowDx="1.7"
                 android:shadowDy="1.5"
                 android:shadowRadius="1.9"
-                android:text="max:"
                 android:textColor="#ce480f"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -115,14 +110,13 @@
                 android:layout_below="@id/tempMax"
                 android:layout_marginBottom="12dp"
                 android:paddingTop="20dp"
-                android:text="min:"
-                android:textColor="#006fff"
-                android:textSize="15sp"
-                android:textStyle="bold"
                 android:shadowColor="#000000"
                 android:shadowDx="1.7"
                 android:shadowDy="1.5"
-                android:shadowRadius="1.9"/>
+                android:shadowRadius="1.9"
+                android:textColor="#006fff"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -134,7 +128,6 @@
             android:layout_marginBottom="12dp"
             android:gravity="right"
             android:maxLines="3"
-            android:text="Data:"
             android:textColor="#000000"
             android:textSize="25sp"
             android:textStyle="bold" />

@@ -1,20 +1,16 @@
 package esame.progetto.xhondar.github.com.info;
 
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,22 +26,85 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import org.w3c.dom.Text;
-
 public class tab_meteo extends Fragment {
     tab t = new tab();
     String ss = "";
-
-    public void setSS(String sss){
+    Calendar calendar = Calendar.getInstance();
+    public void setSS(String sss) {
         this.ss = sss;
     }
 
-    public String getSS(){return ss;}
+    public String getSS() {
+        return ss;
+    }
 
-    public void find_weather(String citta){
+    public int hour(){
+        int hour = calendar.get(calendar.HOUR_OF_DAY);
+        return hour;
+    }
+    public String dayMoment() {
 
 
-        final String city = getSS() ;
+        if (hour() == 22 || hour() == 23 || hour() == 24 || hour() == 00 || hour() == 0 || hour() == 1 || hour() == 2 || hour() == 3 || hour() == 4 || hour() == 5 || hour() == 6) {
+            return "night";
+        } else {
+            return "day";
+        }
+    }
+
+    public void setBackgroundDay() {
+        LinearLayout linearLayout;
+        linearLayout = (LinearLayout) getView().findViewById(R.id.backgroundImage);
+        linearLayout.setBackgroundResource(R.drawable.day);
+        switch (dayMoment()) {
+            case "day":
+                setColorDay();
+                break;
+            case "night":
+                setColorNight();
+                break;
+            default:
+                setColorDay();
+                break;
+        }
+    }
+
+    public void setBackgroundNight() {
+        LinearLayout linearLayout;
+        linearLayout = (LinearLayout) getView().findViewById(R.id.backgroundImage);
+        linearLayout.setBackgroundResource(R.drawable.night);
+    }
+
+    public void setColorNight() {
+        TextView temp, timeData, nomeCitta, descrizione;
+        temp = (TextView) getActivity().findViewById(R.id.tempMeteo);
+        timeData = (TextView) getActivity().findViewById(R.id.timeDate);
+        nomeCitta = (TextView) getActivity().findViewById(R.id.cityName);
+        descrizione = (TextView) getActivity().findViewById(R.id.description);
+
+        descrizione.setTextColor(Color.parseColor("#ffffff"));
+        temp.setTextColor(Color.parseColor("#ffffff"));
+        timeData.setTextColor(Color.parseColor("#ffffff"));
+        nomeCitta.setTextColor(Color.parseColor("#ffffff"));
+    }
+
+    public void setColorDay() {
+        TextView temp, timeData, nomeCitta, descrizione;
+        temp = (TextView) getActivity().findViewById(R.id.tempMeteo);
+        timeData = (TextView) getActivity().findViewById(R.id.timeDate);
+        nomeCitta = (TextView) getActivity().findViewById(R.id.cityName);
+        descrizione = (TextView) getActivity().findViewById(R.id.description);
+
+        descrizione.setTextColor(Color.parseColor("#000000"));
+        temp.setTextColor(Color.parseColor("#000000"));
+        timeData.setTextColor(Color.parseColor("#000000"));
+        nomeCitta.setTextColor(Color.parseColor("#000000"));
+    }
+
+    public void find_weather(String citta) {
+
+
+        final String city = getSS();
         String url = "http://api.openweathermap.org/data/2.5/weather?q=";
         String apiKey = "&appid=41afbec1ba89050882ba1ef131e6aa72";
         url = url + city + apiKey + "&lang=it&units=metric";
@@ -53,85 +112,8 @@ public class tab_meteo extends Fragment {
         JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                try
-                {
-                    /*android:background="@drawable/logo"*/
-                    //TABELLA CODICI CON CORRISPONDENTE CONDIZIONE CLIMATICA
-
-                    /* THUNDERSTORMS / fulmini
-                    200	thunderstorm with light rain
-                    200	thunderstorm with light rain
-                    201	thunderstorm with rain
-                    202	thunderstorm with heavy rain
-                    210	light thunderstorm
-                    211	thunderstorm
-                    212	heavy thunderstorm
-                    221	ragged thunderstorm
-                    230	thunderstorm with light drizzle
-                    231	thunderstorm with drizzle
-                    232	thunderstorm with heavy drizzle
-                    */
-
-                    /* DRIZZLE / pioggerella
-                    300	light intensity drizzle
-                    301	drizzle
-                    302	heavy intensity drizzle
-                    310	light intensity drizzle rain
-                    311	drizzle rain
-                    312	heavy intensity drizzle rain
-                    313	shower rain and drizzle
-                    314	heavy shower rain and drizzle
-                    321	shower drizzle
-                    */
-
-                    /* RAIN / pioggia
-                    500	light rain
-                    501	moderate rain
-                    502	heavy intensity rain
-                    503	very heavy rain
-                    504	extreme rain
-                    511	freezing rain
-                    520	light intensity shower rain
-                    521	shower rain
-                    522	heavy intensity shower rain
-                    531	ragged shower rain
-                    */
-
-                    /* SNOW / neve
-                    600	light snow
-                    601	snow
-                    602	heavy snow
-                    611	sleet
-                    612	shower sleet
-                    615	light rain and snow
-                    616	rain and snow
-                    620	light shower snow
-                    621	shower snow
-                    622	heavy shower snow
-                     */
-
-                    /* ATMOSPHERE / atmosfera
-                    701	mist
-                    711	smoke
-                    721	haze
-                    731	sand, dust whirls
-                    741	fog
-                    751	sand
-                    761	dust
-                    762	volcanic ash
-                    771	squalls
-                    781	tornado
-                     */
-
-                    /* CLOUDS / nuvole
-                    800 clear sky // solo sole
-                    801	few clouds
-                    802	scattered clouds
-                    803	broken clouds
-                    804	overcast clouds
-                     */
-
-                    TextView temp, timeData,temperaturaMin, temperaturaMax, nomeCitta, descrizione;
+                try {
+                    TextView temp, timeData, temperaturaMin, temperaturaMax, nomeCitta, descrizione;
                     temp = (TextView) getActivity().findViewById(R.id.tempMeteo);
                     temperaturaMin = (TextView) getActivity().findViewById(R.id.tempMin);
                     temperaturaMax = (TextView) getActivity().findViewById(R.id.tempMax);
@@ -157,49 +139,79 @@ public class tab_meteo extends Fragment {
                     String temperature = String.valueOf(obj.getInt("temp"));
                     String desc = obj2.getString("description");
 
-                    if(Integer.parseInt(code) >= 200 && Integer.parseInt(code) <= 232) // fulmini
+                    switch (dayMoment()) {
+                        case "day":
+                            setColorDay();
+                            break;
+                        case "night":
+                            setColorNight();
+                            break;
+                        default:
+                            setColorDay();
+                            break;
+                    }
+                    if (Integer.parseInt(code) >= 200 && Integer.parseInt(code) <= 232) // fulmini
                     {
-                        image.setImageResource(R.drawable.thunderstorm);
-                        /*LinearLayout l = (LinearLayout) getActivity().findViewById(R.id.constraintLayout);
-                        l.setBackgroundResource(R.drawable.berlino);*/
+                        if (dayMoment() == "night") {
+                            image.setImageResource(R.drawable.moon_thunder);
+                        } else {
+                            image.setImageResource(R.drawable.thunderstorm);
+                        }
                     }
 
-                    if(Integer.parseInt(code) >= 300 && Integer.parseInt(code) <= 321) // pioggerella
+                    if (Integer.parseInt(code) >= 300 && Integer.parseInt(code) <= 321) // pioggerella
                     {
-                        image.setImageResource(R.drawable.rain);
-
+                        if (dayMoment() == "night") {
+                            image.setImageResource(R.drawable.moon_rain);
+                        } else {
+                            image.setImageResource(R.drawable.rain);
+                        }
                     }
 
-                    if(Integer.parseInt(code) >= 500 && Integer.parseInt(code) <= 531) // pioggia
+                    if (Integer.parseInt(code) >= 500 && Integer.parseInt(code) <= 531) // pioggia
                     {
-                        image.setImageResource(R.drawable.rain);
-                        /*LinearLayout l = (LinearLayout) getActivity().findViewById(R.id.constraintLayout);
-                        l.setBackgroundResource(R.drawable.berlino);*/
+                        if (dayMoment() == "night") {
+                            image.setImageResource(R.drawable.moon_rain);
+                        } else {
+                            image.setImageResource(R.drawable.rain);
+                        }
                     }
 
-                    if(Integer.parseInt(code) >= 600 && Integer.parseInt(code) <= 622) // neve
+                    if (Integer.parseInt(code) >= 600 && Integer.parseInt(code) <= 622) // neve
                     {
-                        image.setImageResource(R.drawable.snow);
-
+                        if (dayMoment() == "night") {
+                            image.setImageResource(R.drawable.moon_snow);
+                        } else {
+                            image.setImageResource(R.drawable.snow);
+                        }
                     }
 
-                    if(Integer.parseInt(code) >= 701 && Integer.parseInt(code) <= 781) // atmosfera
+                    if (Integer.parseInt(code) >= 701 && Integer.parseInt(code) <= 781) // atmosfera, nebbia
                     {
-                        image.setImageResource(R.drawable.mist);
-
+                        if (dayMoment() == "night") {
+                            image.setImageResource(R.drawable.moon_fog);
+                        } else {
+                            image.setImageResource(R.drawable.mist);
+                        }
                     }
 
 
-                    if(Integer.parseInt(code) == 800 ) // atmosfera
+                    if (Integer.parseInt(code) == 800) // atmosfera
                     {
-                        image.setImageResource(R.drawable.sun);
-
+                        if (dayMoment() == "night") {
+                            image.setImageResource(R.drawable.moon);
+                        } else {
+                            image.setImageResource(R.drawable.sun);
+                        }
                     }
 
-                    if(Integer.parseInt(code) >= 801 && Integer.parseInt(code) <= 804) // atmosfera
+                    if (Integer.parseInt(code) >= 801 && Integer.parseInt(code) <= 804) // atmosfera, nuvole sparse, poche nuvole ecc
                     {
-                        image.setImageResource(R.drawable.sun1);
-
+                        if (dayMoment() == "night") {
+                            image.setImageResource(R.drawable.moon_clouds);
+                        } else {
+                            image.setImageResource(R.drawable.sun1);
+                        }
                     }
 
                     temp.setText(temperature + "°");
@@ -210,9 +222,7 @@ public class tab_meteo extends Fragment {
                     descrizione.setText(desc);
 
 
-
-                }catch(JSONException e)
-                {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
@@ -228,22 +238,45 @@ public class tab_meteo extends Fragment {
         queue.add(jor);
     }
 
+
     // -----------------------------------------------------------------------------------------------
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tabmeteo, container, false);
         t = (tab) getActivity();
-        String s =t.getS();
-        switch (s){
-            case "Lubiana": setSS("Ljubljana"); break;
-            case "Norimberga": setSS("Nuremberg"); break;
-            default: setSS(s); break;
+        String s = t.getS();
+        switch (s) {
+            case "Lubiana":
+                setSS("Ljubljana");
+                break;
+            case "Norimberga":
+                setSS("Nuremberg");
+                break;
+            default:
+                setSS(s);
+                break;
         }
 
         find_weather(getSS());
 
         return rootView;
 
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        switch (dayMoment()) {
+            case "day":
+                setBackgroundDay();
+                break;
+            case "night":
+                setBackgroundNight();
+                break;
+            default:
+                setBackgroundDay();
+                break;
+
+        }
     }
 }
