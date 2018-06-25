@@ -2,9 +2,12 @@ package esame.progetto.xhondar.github.com.info;
 
 
 import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 
 import android.support.v4.app.Fragment;
@@ -12,15 +15,30 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class tab extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     public String s;
+    private int[] imageResId = {
+            R.drawable.ic_one,
+            R.drawable.ic_one,
+            R.drawable.ic_one,
+    R.drawable.ic_one};
+    private String tabTitles[] = new String[] { "Meteo", "Locali", "Info", "Mappa" };
+    private Context context;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +46,27 @@ public class tab extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setOffscreenPageLimit(3);
+        mViewPager.setOffscreenPageLimit(4);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
         setS(getIntent().getStringExtra("message"));
         getSupportActionBar().setTitle(s);
 
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_one).setText("Meteo"));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_two).setText("Locali"));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_three).setText("Info"));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_four).setText("Mappa"));
+
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mSectionsPagerAdapter.addFragment(new tab_meteo());
+        mSectionsPagerAdapter.addFragment(new tab_locale());
+        mSectionsPagerAdapter.addFragment(new tab_info());
+        mSectionsPagerAdapter.addFragment(new tab_mappa());
+
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
     }
 
@@ -79,46 +111,20 @@ public class tab extends AppCompatActivity {
             super(fm);
         }
 
+        private final List<Fragment> mFragments = new ArrayList<>();
+
         @Override
         public Fragment getItem(int position) {
-            switch (position)
-            {
-                case 0:
-                    tab_meteo tm = new tab_meteo();
-                    return tm;
-                case 1:
-                    tab_locale tl = new tab_locale();
-                    return tl;
-                case 2:
-                    tab_info ti = new tab_info();
-                    return ti;
-                case 3:
-                    tab_mappa tmp = new tab_mappa();
-                    return tmp;
-                default:
-                    return null;
-            }
+            return mFragments.get(position);
         }
-
         @Override
         public int getCount() {
-            return 4;
+            return mFragments.size();
         }
 
-        @Override
-        public CharSequence getPageTitle(int position){
-            switch (position)
-            {
-                case 0:
-                    return "Meteo";
-                case 1:
-                    return "Locali";
-                case 2:
-                    return "InfoCittà";
-                case 3:
-                    return "Mappa";
-            }
-            return null;
+        public void addFragment(Fragment fragment) {
+            mFragments.add(fragment);
         }
+
     }
 }
