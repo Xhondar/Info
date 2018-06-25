@@ -214,7 +214,7 @@ public class tab_meteo extends Fragment {
                         }
                     }
 
-                    temp.setText(temperature + "°");
+                    temp.setText(temperature + "°" + "C" + "\n" + desc);
                     temperaturaMin.setText("Min " + tMin + "°");
                     temperaturaMax.setText("Max " + tMax + "°");
                     timeData.setText(formatted_date);

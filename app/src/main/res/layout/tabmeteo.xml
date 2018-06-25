@@ -1,4 +1,4 @@
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -38,34 +38,32 @@
             <TextView
                 android:id="@+id/cityName"
                 android:layout_width="wrap_content"
-                android:layout_height="57dp"
+                android:layout_height="60dp"
                 android:maxLines="3"
                 android:paddingRight="16dp"
-                android:layout_gravity="end"
+                android:layout_gravity="center"
                 android:textColor="#000000"
-                android:textSize="30sp"
+                android:textSize="40dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tempMeteo"
                 android:layout_width="wrap_content"
-                android:layout_height="88dp"
-                android:layout_gravity="end"
+                android:layout_height="110dp"
+                android:layout_gravity="center"
                 android:paddingRight="16dp"
-                android:paddingTop="20dp"
                 android:textColor="#000000"
-                android:textSize="60sp"
+                android:textSize="45dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/description"
-                android:layout_width="172dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
                 android:layout_gravity="end"
                 android:paddingRight="16dp"
-                android:paddingTop="20dp"
                 android:textColor="#000000"
-                android:textSize="25sp"
+                android:textSize="55dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -133,4 +131,4 @@
             android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>
-</ScrollView>
+</LinearLayout>
