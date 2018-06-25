@@ -88,6 +88,19 @@
                 android:text="Invio"
                 />
 
+        <!--
+                <com.dd.CircularProgressButton
+                    android:layout_marginTop="50dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/cpbLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cpb_cornerRadius="48dp"
+                    app:cpb_textError="loginfailed"
+                    app:cpb_textComplete="loginsuccess"
+                    app:cpb_textIdle="login"
+                    />
+        -->
             <ImageView
                 android:id="@+id/image"
                 android:layout_marginTop="50dp"

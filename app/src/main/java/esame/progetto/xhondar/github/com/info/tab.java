@@ -53,15 +53,15 @@ public class tab extends AppCompatActivity {
         setS(getIntent().getStringExtra("message"));
         getSupportActionBar().setTitle(s);
 
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_one).setText("Meteo"));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_two).setText("Locali"));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_three).setText("Info"));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_two).setText("Locali"));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_one).setText("Meteo"));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_four).setText("Mappa"));
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        mSectionsPagerAdapter.addFragment(new tab_meteo());
-        mSectionsPagerAdapter.addFragment(new tab_locale());
         mSectionsPagerAdapter.addFragment(new tab_info());
+        mSectionsPagerAdapter.addFragment(new tab_locale());
+        mSectionsPagerAdapter.addFragment(new tab_meteo());
         mSectionsPagerAdapter.addFragment(new tab_mappa());
 
         mViewPager.setAdapter(mSectionsPagerAdapter);
