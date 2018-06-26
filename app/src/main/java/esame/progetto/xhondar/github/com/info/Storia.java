@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.Window;
 
 public class Storia extends AppCompatActivity {
     String s = "";
@@ -16,6 +17,9 @@ public class Storia extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.storia_layout);
+
+        Window w = this.getWindow();
+        w.setStatusBarColor(this.getResources().getColor(R.color.red));
 
         s = getIntent().getStringExtra("message2");
 

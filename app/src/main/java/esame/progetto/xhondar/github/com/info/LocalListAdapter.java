@@ -91,7 +91,7 @@ public class LocalListAdapter extends ArrayAdapter<Local> {
 
         imageLoader.displayImage(img_local, holder.img_local, options);
 
-        return convertView;
+        return result;
     }
 
     private void setupImageLoader(){

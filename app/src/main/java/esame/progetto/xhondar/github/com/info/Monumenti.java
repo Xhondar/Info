@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.Button;
 
 public class Monumenti extends AppCompatActivity {
@@ -16,6 +17,9 @@ public class Monumenti extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.monumenti_layout);
+
+        Window w = this.getWindow();
+        w.setStatusBarColor(this.getResources().getColor(R.color.gold));
 
         s = getIntent().getStringExtra("message3");
 

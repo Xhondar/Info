@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.Window;
 
 public class Info extends AppCompatActivity {
     String s = "";
@@ -15,7 +16,8 @@ public class Info extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.info_layout);
-
+        Window w = this.getWindow();
+        w.setStatusBarColor(this.getResources().getColor(R.color.blue));
         s = getIntent().getStringExtra("message1");
 
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));

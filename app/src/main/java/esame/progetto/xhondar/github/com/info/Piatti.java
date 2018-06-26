@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.Window;
 
-    public class Piatti extends AppCompatActivity {
+public class Piatti extends AppCompatActivity {
         String s = "";
         private ViewPager viewPager;
         private SlideAdapter_piatti myadapter;
@@ -14,6 +15,9 @@ import android.view.MenuItem;
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.piatti_layout);
+
+            Window w = this.getWindow();
+            w.setStatusBarColor(this.getResources().getColor(R.color.green));
 
             s = getIntent().getStringExtra("message4");
 
