@@ -214,12 +214,13 @@ public class tab_meteo extends Fragment {
                         }
                     }
 
-                    temp.setText(temperature + "°" + "C" + "\n" + desc);
+                    temp.setText(temperature + " °" + "C");
                     temperaturaMin.setText("Min " + tMin + "°");
                     temperaturaMax.setText("Max " + tMax + "°");
                     timeData.setText(formatted_date);
                     nomeCitta.setText(t.getS());
-                    descrizione.setText(desc);
+                    if(desc == "nebbia"){desc = "foschia";}
+                    descrizione.setText(String.valueOf(desc));
 
 
                 } catch (JSONException e) {
