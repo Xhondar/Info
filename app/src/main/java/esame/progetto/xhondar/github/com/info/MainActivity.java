@@ -61,44 +61,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 startActivity(intent);
             }
         });
-/*
-        circularProgressButton = (CircularProgressButton) findViewById(R.id.cpbLogin);
-
-        circularProgressButton.setIndeterminateProgressMode(true);
-
-        circularProgressButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(circularProgressButton.getProgress()==0)
-                {
-                    circularProgressButton.setProgress(30);
-                }
-                else if (circularProgressButton.getProgress()==-1)
-                {
-                    circularProgressButton.setProgress(0);
-                }
-                else if (circularProgressButton.getProgress()==100)
-                {
-                    Intent intent = new Intent(MainActivity.this, tab.class);
-                    intent.putExtra("message", getS());
-                    startActivity(intent);
-                }
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(etUserName.getText().toString().equals("appeteria") && etPassword.getText().toString().equals("123"))
-                        {
-                            circularProgressButton.setProgress(100);
-                        }
-                        else
-                        {
-                            circularProgressButton.setProgress(-1);
-                        }
-                    }
-                },3000);
-            }
-        });*/
     }
 
     public void setS(String ss){
