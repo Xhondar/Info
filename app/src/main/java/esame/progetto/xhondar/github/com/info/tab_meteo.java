@@ -45,7 +45,7 @@ public class tab_meteo extends Fragment {
     public String dayMoment() {
 
 
-        if (hour() == 22 || hour() == 23 || hour() == 24 || hour() == 00 || hour() == 0 || hour() == 1 || hour() == 2 || hour() == 3 || hour() == 4 || hour() == 5 || hour() == 6) {
+        if ((hour() > 21 && hour() < 25) && (hour() >= 0 && hour() < 6)) {
             return "night";
         } else {
             return "day";
@@ -80,7 +80,7 @@ public class tab_meteo extends Fragment {
         temp = (TextView) getActivity().findViewById(R.id.tempMeteo);
         timeData = (TextView) getActivity().findViewById(R.id.timeDate);
         nomeCitta = (TextView) getActivity().findViewById(R.id.cityName);
-        descrizione = (TextView) getActivity().findViewById(R.id.description);
+        descrizione = (TextView) getActivity().findViewById(R.id.detail);
 
         descrizione.setTextColor(Color.parseColor("#ffffff"));
         temp.setTextColor(Color.parseColor("#ffffff"));
@@ -93,7 +93,7 @@ public class tab_meteo extends Fragment {
         temp = (TextView) getActivity().findViewById(R.id.tempMeteo);
         timeData = (TextView) getActivity().findViewById(R.id.timeDate);
         nomeCitta = (TextView) getActivity().findViewById(R.id.cityName);
-        descrizione = (TextView) getActivity().findViewById(R.id.description);
+        descrizione = (TextView) getActivity().findViewById(R.id.detail);
 
         descrizione.setTextColor(Color.parseColor("#000000"));
         temp.setTextColor(Color.parseColor("#000000"));
@@ -113,13 +113,13 @@ public class tab_meteo extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    TextView temp, timeData, temperaturaMin, temperaturaMax, nomeCitta, descrizione;
+                    TextView temp, timeData, temperaturaMin, temperaturaMax, nomeCitta, details;
                     temp = (TextView) getActivity().findViewById(R.id.tempMeteo);
                     temperaturaMin = (TextView) getActivity().findViewById(R.id.tempMin);
                     temperaturaMax = (TextView) getActivity().findViewById(R.id.tempMax);
                     timeData = (TextView) getActivity().findViewById(R.id.timeDate);
                     nomeCitta = (TextView) getActivity().findViewById(R.id.cityName);
-                    descrizione = (TextView) getActivity().findViewById(R.id.description);
+                    details = (TextView) getActivity().findViewById(R.id.detail);
 
                     ImageView image = (ImageView) getActivity().findViewById(R.id.weatherPicture);
 
@@ -214,14 +214,12 @@ public class tab_meteo extends Fragment {
                         }
                     }
 
-                    temp.setText(temperature + " °" + "C");
+                    temp.setText(temperature + "°C");
                     temperaturaMin.setText("Min " + tMin + "°");
                     temperaturaMax.setText("Max " + tMax + "°");
                     timeData.setText(formatted_date);
                     nomeCitta.setText(t.getS());
-                    if(desc == "nebbia"){desc = "foschia";}
-                    descrizione.setText(String.valueOf(desc));
-
+                    details.setText(String.valueOf(desc));
 
                 } catch (JSONException e) {
                     e.printStackTrace();
