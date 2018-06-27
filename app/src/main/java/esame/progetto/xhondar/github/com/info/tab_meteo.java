@@ -110,37 +110,6 @@ public class tab_meteo extends Fragment {
         nomeCitta.setTextColor(Color.parseColor("#000000"));
     }
 
-    public void forecast_weather(String citta){
-        final String city = getSS();
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=";
-        String apiKey = "&appid=41afbec1ba89050882ba1ef131e6aa72";
-        url = url + city + apiKey + "&lang=it&units=metric";
-
-        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-
-                    JSONObject obj = response.getJSONObject("main");
-                    JSONArray array = response.getJSONArray("weather");
-                    JSONObject obj2 = array.getJSONObject(0);
-
-                } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }, new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-
-        }
-    }
-        );
-    RequestQueue queue = Volley.newRequestQueue(getContext());
-        queue.add(jor);
-    }
-
     public void find_weather(String citta) {
 
 

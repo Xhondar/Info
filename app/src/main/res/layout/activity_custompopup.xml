@@ -48,7 +48,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/moon"/>
+                android:src="@drawable/sun"/>
 
         </LinearLayout>
 
@@ -63,7 +63,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="05-Mar"
+                android:text="29-Giu"
                 android:textSize="18sp"
                 android:textColor="@color/white"/>
 
@@ -88,7 +88,7 @@
                 android:id="@+id/tMaxOne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="50°C"
+                android:text="33°C"
                 android:shadowColor="#000000"
                 android:shadowDx="1.7"
                 android:shadowDy="1.5"
@@ -115,7 +115,7 @@
                 android:id="@+id/tMinOne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="15°C"
+                android:text="22°C"
                 android:textSize="18sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1.7"
@@ -143,7 +143,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/moon"/>
+                android:src="@drawable/rain"/>
 
         </LinearLayout>
 
@@ -158,7 +158,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="05-Mar"
+                android:text="30-Giu"
                 android:textSize="18sp"
                 android:textColor="@color/white"/>
 
@@ -183,7 +183,7 @@
                 android:id="@+id/tMaxTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="50°C"
+                android:text="29°C"
                 android:shadowColor="#000000"
                 android:shadowDx="1.7"
                 android:shadowDy="1.5"
@@ -210,7 +210,7 @@
                 android:id="@+id/tMinTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="15°C"
+                android:text="20°C"
                 android:textSize="18sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1.7"
@@ -238,7 +238,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/moon"/>
+                android:src="@drawable/sun1"/>
 
         </LinearLayout>
 
@@ -253,7 +253,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="05-Mar"
+                android:text="01-Lug"
                 android:textSize="18sp"
                 android:textColor="@color/white"/>
 
@@ -278,7 +278,7 @@
                 android:id="@+id/tMaxThree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="50°C"
+                android:text="31°C"
                 android:shadowColor="#000000"
                 android:shadowDx="1.7"
                 android:shadowDy="1.5"
@@ -305,7 +305,7 @@
                 android:id="@+id/tMinThree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="15°C"
+                android:text="26°C"
                 android:textSize="18sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1.7"

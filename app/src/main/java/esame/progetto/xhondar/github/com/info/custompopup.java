@@ -31,7 +31,7 @@ public class custompopup extends AppCompatActivity {
 
     public void forecast_weather(String citta){
         final String city = getSS();
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=";
+        String url = "http://api.openweathermap.org/data/2.5/forecast?q";
         String apiKey = "&appid=41afbec1ba89050882ba1ef131e6aa72";
         url = url + city + apiKey + "&lang=it&units=metric";
 
@@ -40,9 +40,31 @@ public class custompopup extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 try {
 
-                    JSONObject obj = response.getJSONObject("main");
-                    JSONArray array = response.getJSONArray("weather");
-                    JSONObject obj2 = array.getJSONObject(0);
+                    JSONArray arrayList = response.getJSONArray("list"); // lista di tutti gli array presenti nel JSON
+                    /*
+                    //---------------------------------------------------------------------------------------------
+                    JSONObject dayOne = arrayList.getJSONObject(0);
+                    JSONArray arrayOne = dayOne.getJSONArray("weather"); //primo giorno
+                    JSONArray objOne = arrayOne.getJSONObject("main");
+                    //---------------------------------------------------------------------------------------------
+
+                    JSONObject dayTwo = arrayList.getJSONObject(1);
+                    JSONArray arrayTwo = dayTwo.getJSONArray("weather"); //primo giorno
+                    //---------------------------------------------------------------------------------------------
+                    JSONObject dayThree = arrayList.getJSONObject(2);
+                    JSONArray arrayThree = dayThree.getJSONArray("weather"); //primo giorno
+
+
+                    //---------------------------------------------------------------------------------------------
+
+                    String tMin = String.valueOf(obj.getString("temp_min"));
+                    String tMax = String.valueOf(obj.getString("temp_max"));
+                    String code = obj2.getString("id");
+                    String temperature = String.valueOf(obj.getInt("temp"));
+                    String desc = obj2.getString("description");
+
+                    //---------------------------------------------------------------------------------------------
+                */
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -59,6 +81,7 @@ public class custompopup extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(jor);
     }
+
     public void closePopup(){
         Button btn;
         btn = (Button) findViewById(R.id.btnclose);
