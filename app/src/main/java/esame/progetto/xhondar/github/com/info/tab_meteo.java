@@ -1,6 +1,9 @@
 package esame.progetto.xhondar.github.com.info;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,6 +34,8 @@ public class tab_meteo extends Fragment {
     tab t = new tab();
     String ss = "";
     Calendar calendar = Calendar.getInstance();
+    Dialog myDialog;
+
     public void setSS(String sss) {
         this.ss = sss;
     }
@@ -38,14 +44,17 @@ public class tab_meteo extends Fragment {
         return ss;
     }
 
+
+    //--------------------------------------------------
     public int hour(){
         int hour = calendar.get(calendar.HOUR_OF_DAY);
         return hour;
     }
+
     public String dayMoment() {
 
 
-        if ((hour() > 21 && hour() < 25) && (hour() >= 0 && hour() < 6)) {
+        if (hour() == 22 || hour() == 23 || hour() == 24 || hour() == 00 || hour() == 0 || hour() == 1 || hour() == 2 || hour() == 3 || hour() == 4 || hour() == 5 || hour() == 6) {
             return "night";
         } else {
             return "day";
@@ -99,6 +108,37 @@ public class tab_meteo extends Fragment {
         temp.setTextColor(Color.parseColor("#000000"));
         timeData.setTextColor(Color.parseColor("#000000"));
         nomeCitta.setTextColor(Color.parseColor("#000000"));
+    }
+
+    public void forecast_weather(String citta){
+        final String city = getSS();
+        String url = "http://api.openweathermap.org/data/2.5/weather?q=";
+        String apiKey = "&appid=41afbec1ba89050882ba1ef131e6aa72";
+        url = url + city + apiKey + "&lang=it&units=metric";
+
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+
+                    JSONObject obj = response.getJSONObject("main");
+                    JSONArray array = response.getJSONArray("weather");
+                    JSONObject obj2 = array.getJSONObject(0);
+
+                } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }, new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+
+        }
+    }
+        );
+    RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(jor);
     }
 
     public void find_weather(String citta) {
@@ -237,11 +277,30 @@ public class tab_meteo extends Fragment {
         queue.add(jor);
     }
 
+    public void createIntent(){
+        Intent intent = new Intent(getActivity(), custompopup.class);
+        startActivity(intent);
+    }
+
+    public void openPopup(){
+        Button btn;
+        btn = (Button) getActivity().findViewById(R.id.previsioni);
+
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                createIntent();
+            }
+        });
+
+    }
 
     // -----------------------------------------------------------------------------------------------
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tabmeteo, container, false);
+
+
         t = (tab) getActivity();
         String s = t.getS();
         switch (s) {
@@ -275,7 +334,7 @@ public class tab_meteo extends Fragment {
             default:
                 setBackgroundDay();
                 break;
-
         }
+        openPopup();
     }
 }
